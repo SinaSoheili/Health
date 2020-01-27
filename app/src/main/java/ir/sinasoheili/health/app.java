@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import model.DB_Calories;
 import model.DB_Illness;
 import model.DB_Medicine;
 
@@ -17,6 +19,7 @@ public class app extends Application
     public static final String pref_name    = "DB_COPY";
     public static final String key_illness  = DB_Illness.getDbName();
     public static final String key_medicins = DB_Medicine.getDbName();
+    public static final String key_Calories = DB_Calories.getDbName();
 
     @Override
     public void onCreate()
@@ -63,8 +66,29 @@ public class app extends Application
             }
         });
 
+        Thread t_calories = new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                try
+                {
+                    boolean result_Calories = copy_database(DB_Calories.getDbName() , getApplicationContext().getAssets().open(DB_Calories.getDbName()));
+                    String slog = result_Calories ? "Calories DB copied" : "Calories DB don't copied";
+                    Log.i("tag" , slog);
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences(pref_name , MODE_PRIVATE);
+                    pref.edit().putBoolean(key_Calories , true).commit();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         t_illness.start();
         t_medicine.start();
+        t_calories.start();
     }
 
     private boolean copy_database(String db_name , InputStream is)
