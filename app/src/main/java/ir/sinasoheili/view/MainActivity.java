@@ -1,4 +1,4 @@
-package ir.sinasoheili.health;
+package ir.sinasoheili.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
