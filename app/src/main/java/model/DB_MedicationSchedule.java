@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DB_MedicationSchedule extends SQLiteOpenHelper
@@ -74,6 +75,36 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
 
         db.close();
         return items;
+    }
+
+    public ArrayList<MedicationSchedule> get_all()
+    {
+        ArrayList<MedicationSchedule> all_item = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        String cmd = "SELECT * FROM '"+TABLE_NAME+"'";
+        Cursor cursor = db.rawQuery(cmd , null);
+        cursor.moveToFirst();
+        int count = cursor.getCount();
+
+        String medicine_name;
+        String medicine_amount;
+        String time;
+        MedicationSchedule.Day item_day;
+
+        for(int i=0 ; i<count ; i++)
+        {
+            medicine_name = cursor.getString(cursor.getColumnIndex(MEDICINE_NAME_COLUMN));
+            medicine_amount = cursor.getString(cursor.getColumnIndex(MEDICINE_AMOUNT_COLUMN));
+            time = cursor.getString(cursor.getColumnIndex(TIME_COLUMN));
+            item_day = MedicationSchedule.Day.String2Day(cursor.getString(cursor.getColumnIndex(DAY_COLUMN)));
+
+            all_item.add(new MedicationSchedule(medicine_name , medicine_amount , time , item_day));
+
+            cursor.moveToNext();
+        }
+
+        db.close();
+        return all_item;
     }
 
     public long insert (MedicationSchedule ms)
