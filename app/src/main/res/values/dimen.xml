@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="MainView_CardView_MarginRight">15dp</dimen>
+    <dimen name="MainView_CardView_MarginLeft">15dp</dimen>
+    <dimen name="MainView_CardView_MarginTop">15dp</dimen>
+    <dimen name="MainView_CardView_MarginButtom">0dp</dimen>
+
+    <dimen name="MainView_CardView_Radius">10dp</dimen>
+
+    <dimen name="MainView_CardView_Title_TextSize">18sp</dimen>
+
+    <dimen name="MedicationSchedule_ListItem_TextSize">18sp</dimen>
+
+</resources>

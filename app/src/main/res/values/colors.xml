@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="MainView_CardView_Title">#1B1B1B</color>
+
+    <color name="MedicationSchedule_ListItem_text">#292929</color>
 </resources>

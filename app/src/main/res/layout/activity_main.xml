@@ -7,18 +7,53 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/tablayout"
-        />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        />
+        app:cardCornerRadius="@dimen/MainView_CardView_Radius"
+        android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
+        android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
+        android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
+        android:layout_marginBottom ="@dimen/MainView_CardView_MarginButtom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/MainView_MedicationSchedule_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/MainView_CardView_Title"
+                android:text="@string/MainView_CardView_Medication_Title"
+                android:textSize="@dimen/MainView_CardView_Title_TextSize"
+                />
+
+            <include
+                android:id="@+id/layout_MedicationSchdule_item"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/medication_schedule_list_item"
+                android:layout_below="@id/MainView_MedicationSchedule_Title"
+                android:visibility="gone"
+                />
+
+            <ListView
+                android:id="@+id/MainView_MedicationSchedule_ListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/layout_MedicationSchdule_item"
+                android:visibility="gone"
+                />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
