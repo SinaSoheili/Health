@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+        <EditText
+            android:id="@+id/blood_glucose_register_dialog_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:hint="تاریخ"
+            android:layout_margin="10dp"
+            />
+
+        <EditText
+            android:id="@+id/blood_glucose_register_dialog_blood_glucose_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:hint="مقدار قند خون"
+            android:layout_margin="10dp"
+            android:inputType="number"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+        <EditText
+            android:id="@+id/blood_glucose_register_dialog_insuline_unit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:hint="تعداد واحد"
+            android:layout_margin="10dp"
+            android:inputType="number"
+            />
+
+        <EditText
+            android:id="@+id/blood_glucose_register_dialog_blood_glucose_insuline_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:hint="نام انسولین"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/blood_glucose_register_dialog_spinner_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/blood_glucose_register_dialog_spinner_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/blood_glucose_register_dialog_btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="ثبت"
+        />
+
+</LinearLayout>
