@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener
 {
-    private int fragment_id_pages[] = {R.layout.page1_layout , R.layout.page2_layout , R.layout.page3_layout};
+    private int fragment_id_pages[] = {R.layout.home_page_layout, R.layout.dashboard_page_layout, R.layout.profile_page_layout};
 
     private BottomNavigationView bnv;
 
@@ -41,19 +41,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     {
         if(menuItem.getItemId() == R.id.manu_bnv_home)
         {
-            Page1_Fragment fragment_page_1 = new Page1_Fragment();
+            HomePage_Fragment fragment_page_1 = new HomePage_Fragment();
             show_fragment(fragment_page_1);
             return true;
         }
         else if(menuItem.getItemId() == R.id.manu_bnv_dashboard)
         {
-            Page2_Fragment fragment_page_2 = new Page2_Fragment();
+            DashboaedPage_Fragment fragment_page_2 = new DashboaedPage_Fragment();
             show_fragment(fragment_page_2);
             return true;
         }
         else if(menuItem.getItemId() == R.id.manu_bnv_profile)
         {
-            Page3_Fragment fragment_page_3 = new Page3_Fragment();
+            Profile_Fragment fragment_page_3 = new Profile_Fragment();
             show_fragment(fragment_page_3);
             return true;
         }

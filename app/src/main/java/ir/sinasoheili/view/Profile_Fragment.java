@@ -8,13 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class Page3_Fragment extends Fragment
+public class Profile_Fragment extends Fragment
 {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        View root_view = inflater.inflate(R.layout.page3_layout , null , false);
+        View root_view = inflater.inflate(R.layout.profile_page_layout, null , false);
 
         return root_view;
     }

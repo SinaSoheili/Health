@@ -8,7 +8,7 @@ import model.BloodGlucose;
 import model.BloodPressure;
 import model.MedicationSchedule;
 
-public interface Main_page_contract
+public interface Home_page_contract
 {
     public interface Main_page_view
     {
@@ -19,7 +19,7 @@ public interface Main_page_contract
         public void show_dialog_blood_pressure();
     }
 
-    public interface Main_page_presenter
+    public interface Home_page_presenter
     {
         public ArrayList<MedicationSchedule> get_Medication_schedule(MedicationSchedule.Day day);
 

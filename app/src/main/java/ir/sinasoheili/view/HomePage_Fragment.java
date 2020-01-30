@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -20,20 +19,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import model.BloodGlucose;
 import model.BloodPressure;
 import model.MedicationSchedule;
-import presenter.Main_page_contract;
-import presenter.Main_page_presenter;
+import presenter.Home_page_contract;
 
-public class Page1_Fragment extends Fragment implements Main_page_contract.Main_page_view, View.OnClickListener
+public class HomePage_Fragment extends Fragment implements Home_page_contract.Main_page_view, View.OnClickListener
 {
-    private Main_page_contract.Main_page_presenter presenter_obj;
+    private Home_page_contract.Home_page_presenter presenter_obj;
 
     private String day[] = {"شنبه" , "یکشنبه" , "دوشنبه" , "سه شنبه" , "چهار شنبه" , "پنجشنبه" , "جمعه"};
     private String time[] = {"قبل صبحانه" , "بعد صبحانه" , "قبل نهار" , "بعد ناهار" , "قبل شام" , "بعد شام" , "قبل خواب"};
@@ -71,7 +68,7 @@ public class Page1_Fragment extends Fragment implements Main_page_contract.Main_
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        root_view = inflater.inflate(R.layout.page1_layout , null , false);
+        root_view = inflater.inflate(R.layout.home_page_layout, null , false);
 
         init_obj();
 
@@ -82,7 +79,7 @@ public class Page1_Fragment extends Fragment implements Main_page_contract.Main_
 
     private void init_obj()
     {
-        presenter_obj = new Main_page_presenter(this);
+        presenter_obj = new presenter.Home_page_presenter(this);
 
         //Medication Schedule
         MainView_CardView_MedicationSchedule_Title = root_view.findViewById(R.id.MainView_MedicationSchedule_Title);
