@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     {
         BottomNavigationView bnv = findViewById(R.id.bottom_navigation_view);
         bnv.setOnNavigationItemSelectedListener(this);
+
+        //simulate click in home page to show item
+        View v = bnv.getRootView().findViewById(bnv.getSelectedItemId());
+        v.performClick();
     }
 
     @Override
