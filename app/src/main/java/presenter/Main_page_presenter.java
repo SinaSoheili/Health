@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 
 import model.BloodGlucose;
@@ -18,9 +20,9 @@ public class Main_page_presenter implements Main_page_contract.Main_page_present
     private Main_page_contract.Main_page_view view_obj;
     private Context context;
 
-    public Main_page_presenter(Activity view_obj)
+    public Main_page_presenter(Fragment view_obj)
     {
-        this.context = view_obj;
+        this.context = view_obj.getContext();
         this.view_obj = (Main_page_contract.Main_page_view) view_obj;
     }
 
