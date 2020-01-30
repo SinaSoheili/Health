@@ -7,7 +7,9 @@ import android.view.View;
 import java.util.ArrayList;
 
 import model.BloodGlucose;
+import model.BloodPressure;
 import model.DB_BloodGlucose;
+import model.DB_BloodPressure;
 import model.DB_MedicationSchedule;
 import model.MedicationSchedule;
 
@@ -47,6 +49,21 @@ public class Main_page_presenter implements Main_page_contract.Main_page_present
     {
         DB_BloodGlucose db = new DB_BloodGlucose(context);
         long id = db.insert(bg);
+        if(id != -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean register_BloodPressure(BloodPressure bp)
+    {
+        DB_BloodPressure db = new DB_BloodPressure(context);
+        long id = db.insert(bp);
         if(id != -1)
         {
             return true;

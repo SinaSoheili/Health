@@ -1,16 +1,13 @@
 package ir.sinasoheili.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,16 +18,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
-
-import java.security.MessageDigest;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import model.BloodGlucose;
-import model.DB_MedicationSchedule;
+import model.BloodPressure;
 import model.MedicationSchedule;
 import presenter.Main_page_contract;
 import presenter.Main_page_presenter;
@@ -59,6 +52,15 @@ public class MainActivity extends AppCompatActivity implements Main_page_contrac
     private Button   btn_blood_glucose_submit;
     private Dialog Blood_Glucose_Dialog;
 
+    //blood Pressure register
+    private TextView tv_BloodPressure_register;
+    private Dialog Blood_Pressure_Dialog;
+    private EditText et_blood_pressure_sys;
+    private EditText et_blood_pressure_dias;
+    private EditText et_blood_pressure_date;
+    private Spinner  spinner_blood_pressure_day;
+    private Button btn_blood_pressure_submit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -83,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements Main_page_contrac
         //blood glucose register
         tv_BloodGlucose_register = findViewById(R.id.MainView_BloodGlucose_Title);
         tv_BloodGlucose_register.setOnClickListener(this);
+
+        //blood pressure register
+        tv_BloodPressure_register = findViewById(R.id.MainView_BloodPressure_Title);
+        tv_BloodPressure_register.setOnClickListener(this);
     }
 
     //contract function's
@@ -240,15 +246,98 @@ public class MainActivity extends AppCompatActivity implements Main_page_contrac
         }
     }
 
+    //dialog register blood prssure
+    @Override
+    public void show_dialog_blood_pressure()
+    {
+        Blood_Pressure_Dialog = new Dialog(this);
+        Blood_Pressure_Dialog.setContentView(getLayoutInflater().inflate(R.layout.blood_pressure_registere_dialog , null , false));
+        Blood_Pressure_Dialog.show();
+        Blood_Pressure_Dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT , LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        View rootview = Blood_Pressure_Dialog.getWindow().getDecorView();
+
+        et_blood_pressure_sys = rootview.findViewById(R.id.blood_pressure_register_dialog_systolic);
+        et_blood_pressure_dias = rootview.findViewById(R.id.blood_pressure_register_dialog_diastolic);
+        et_blood_pressure_date = rootview.findViewById(R.id.blood_pressure_register_dialog_date);
+        spinner_blood_pressure_day = rootview.findViewById(R.id.blood_pressure_register_dialog_spinner_day);
+        btn_blood_pressure_submit = rootview.findViewById(R.id.blood_Pressure_register_dialog_btn_submit);
+
+        btn_blood_pressure_submit.setOnClickListener(this);
+
+        ArrayAdapter<String> day_adapter = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_item , day);
+        day_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_blood_pressure_day.setAdapter(day_adapter);
+
+        et_blood_pressure_date.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus)
+            {
+                if(hasFocus == true)
+                {
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                    {
+                        DatePickerDialog dpd = new DatePickerDialog(MainActivity.this);
+                        dpd.show();
+
+                        dpd.setOnDateSetListener(new DatePickerDialog.OnDateSetListener()
+                        {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
+                            {
+                                et_blood_pressure_date.setText("");
+                                et_blood_pressure_date.setText(year+"/"+month+"/"+dayOfMonth);
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    public boolean check_valid_blood_pressure_et()
+    {
+        boolean f1=true , f2=true , f3=true ;
+
+        if(et_blood_pressure_dias.getText().toString().isEmpty())
+        {
+            et_blood_pressure_dias.setError("لطفا این قسمت را پر کنید!");
+            et_blood_pressure_dias.requestFocus();
+            f1 = false;
+        }
+        else if(et_blood_pressure_sys.getText().toString().isEmpty())
+        {
+            et_blood_pressure_sys.setError("لطفا این قسمت را پر کنید!");
+            et_blood_pressure_sys.requestFocus();
+            f2 = false;
+        }
+        else if(et_blood_pressure_date.getText().toString().isEmpty())
+        {
+            et_blood_pressure_date.setError("لطفا این قسمت را پر کنید!");
+            et_blood_pressure_date.requestFocus();
+            f3 = false;
+        }
+
+        if(f1 == f2 == f3 == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //on click
     @Override
     public void onClick(View v)
     {
-        if(v.getId() == tv_BloodGlucose_register.getId())
+        if(v.equals(tv_BloodGlucose_register))
         {
             show_dialog_blood_glucose();
         }
-        else if(v.getId() == btn_blood_glucose_submit.getId())
+        else if(v.equals(btn_blood_glucose_submit))
         {
             boolean valid = check_valid_blood_glucose_et();
             if(valid == true)
@@ -274,6 +363,36 @@ public class MainActivity extends AppCompatActivity implements Main_page_contrac
                 }
 
                 Blood_Glucose_Dialog.dismiss();
+            }
+        }
+        else if(v.equals(tv_BloodPressure_register))
+        {
+            show_dialog_blood_pressure();
+        }
+        else if(v.equals(btn_blood_pressure_submit))
+        {
+            boolean valid = check_valid_blood_pressure_et();
+            if(valid == true)
+            {
+                float systolic = Float.valueOf(et_blood_pressure_sys.getText().toString());
+                float diastolic = Float.valueOf(et_blood_pressure_dias.getText().toString());
+                String day = spinner_blood_pressure_day.getSelectedItem().toString();
+
+                String sdate[] = et_blood_pressure_date.getText().toString().split("/");
+                Date date = new Date(Integer.valueOf(sdate[0]) , Integer.valueOf(sdate[1]) , Integer.valueOf(sdate[2]));
+
+                boolean result = presenter_obj.register_BloodPressure(new BloodPressure(systolic , diastolic , date , day));
+
+                if(result == true)
+                {
+                    Toast.makeText(this, "ذخیره شد", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(this, "ذخیره نشد!!!", Toast.LENGTH_SHORT).show();
+                }
+
+                Blood_Pressure_Dialog.dismiss();
             }
         }
     }

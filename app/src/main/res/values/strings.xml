@@ -5,4 +5,6 @@
 
     <string name="MainView_CardView_BloodGlucose_Title">ثبت قند خون</string>
 
+    <string name="MainView_CardView_BloodPressure_Title">ثبت فشار خون</string>
+
 </resources>
