@@ -9,4 +9,6 @@
 
     <string name="Dashboard_bnt_medicine">دارو ها</string>
 
+    <string name="Dashboard_bnt_illness">بیماری ها</string>
+
 </resources>

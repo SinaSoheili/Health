@@ -15,7 +15,7 @@
         android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
         android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
         android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-        android:layout_marginBottom ="@dimen/MainView_CardView_MarginButtom">
+        android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -64,7 +64,7 @@
         android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
         android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
         android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-        android:layout_marginBottom ="@dimen/MainView_CardView_MarginButtom">
+        android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -92,7 +92,7 @@
         android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
         android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
         android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-        android:layout_marginBottom ="@dimen/MainView_CardView_MarginButtom">
+        android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
 
         <RelativeLayout
             android:layout_width="match_parent"

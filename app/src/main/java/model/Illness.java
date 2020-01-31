@@ -1,8 +1,10 @@
 package model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
-public class Illness
+public class Illness implements Parcelable
 {
     private int id;
     private String name_fa;
@@ -17,6 +19,25 @@ public class Illness
         this.content = content;
         this.name_en = name_en;
     }
+
+    protected Illness(Parcel in) {
+        id = in.readInt();
+        name_fa = in.readString();
+        content = in.readString();
+        name_en = in.readString();
+    }
+
+    public static final Creator<Illness> CREATOR = new Creator<Illness>() {
+        @Override
+        public Illness createFromParcel(Parcel in) {
+            return new Illness(in);
+        }
+
+        @Override
+        public Illness[] newArray(int size) {
+            return new Illness[size];
+        }
+    };
 
     //GETTER
     public int getId()
@@ -61,11 +82,25 @@ public class Illness
     }
 
     //TO STRING
-
-    @NonNull
     @Override
     public String toString()
     {
         return this.name_fa;
+    }
+
+    //implement parcelable
+    @Override
+    public int describeContents()
+    {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeInt(id);
+        dest.writeString(name_fa);
+        dest.writeString(content);
+        dest.writeString(name_en);
     }
 }
