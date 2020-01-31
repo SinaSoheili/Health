@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         else if(menuItem.getItemId() == R.id.manu_bnv_dashboard)
         {
-            DashboaedPage_Fragment fragment_page_2 = new DashboaedPage_Fragment();
+            DashboardPage_Fragment fragment_page_2 = new DashboardPage_Fragment();
             show_fragment(fragment_page_2);
             return true;
         }

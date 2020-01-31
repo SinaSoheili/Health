@@ -7,4 +7,6 @@
 
     <string name="MainView_CardView_BloodPressure_Title">ثبت فشار خون</string>
 
+    <string name="Dashboard_bnt_medicine">دارو ها</string>
+
 </resources>
