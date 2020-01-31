@@ -59,6 +59,8 @@ public class DashboardPage_Fragment extends Fragment implements Dashboard_page_c
     @Override
     public void onClick(View v)
     {
+        //TODO : check db's copy ? if they copied show list's
+
         if(v.equals(btn_medicine))
         {
             Intent intent = new Intent(this.getContext() , Medicine_List_Activity.class);

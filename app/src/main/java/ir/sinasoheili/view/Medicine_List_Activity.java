@@ -1,21 +1,13 @@
 package ir.sinasoheili.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import model.Medicine;
 import presenter.Dashboard_Page_presenter;
 import presenter.Dashboard_page_contract;

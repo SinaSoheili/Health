@@ -26,4 +26,6 @@
     <dimen name="Medicine_Activity_Item_MarginTop">10dp</dimen>
     <dimen name="Medicine_Activity_Item_MarginBottom">10dp</dimen>
 
+    <dimen name="Dashboard_Buttn_baorder_radius">10dp</dimen>
+
 </resources>

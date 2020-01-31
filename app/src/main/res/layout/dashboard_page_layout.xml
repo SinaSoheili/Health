@@ -10,53 +10,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <androidx.cardview.widget.CardView
+        <Button
+            android:id="@+id/Dashboard_btn_medicine"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:cardCornerRadius="@dimen/MainView_CardView_Radius"
-            android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
-            android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
-            android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-            android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/dashboard_button_boarder"
+            android:textColor="@color/MainView_CardView_Title"
+            android:text="@string/Dashboard_bnt_medicine"
+            android:textSize="@dimen/MainView_CardView_Title_TextSize"
+            />
 
-            <Button
-                android:id="@+id/Dashboard_btn_medicine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:textColor="@color/MainView_CardView_Title"
-                android:text="@string/Dashboard_bnt_medicine"
-                android:textSize="@dimen/MainView_CardView_Title_TextSize"
-                />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
+        <Button
+            android:id="@+id/Dashboard_btn_illness"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:cardCornerRadius="@dimen/MainView_CardView_Radius"
-            android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
-            android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
-            android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-            android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
-
-            <Button
-                android:id="@+id/Dashboard_btn_illness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:textColor="@color/MainView_CardView_Title"
-                android:text="@string/Dashboard_bnt_illness"
-                android:textSize="@dimen/MainView_CardView_Title_TextSize"
-                />
-
-        </androidx.cardview.widget.CardView>
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/dashboard_button_boarder"
+            android:textColor="@color/MainView_CardView_Title"
+            android:text="@string/Dashboard_bnt_illness"
+            android:textSize="@dimen/MainView_CardView_Title_TextSize"
+            />
 
     </LinearLayout>
 

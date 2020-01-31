@@ -35,7 +35,6 @@ public class Medicine_Activity_Item extends AppCompatActivity
             if(bundle.containsKey(Medicine_List_Activity.MEDICINE_KEY_INTENT))
             {
                 current_medicine = (Medicine) bundle.get(Medicine_List_Activity.MEDICINE_KEY_INTENT);
-                Log.i("tag" , current_medicine.toString());
                 show_content();
             }
         }
