@@ -1,8 +1,10 @@
 package model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
-public class Medicine
+public class Medicine implements Parcelable
 {
     private String name_tejary;
     private String goroh_daroei;
@@ -39,6 +41,40 @@ public class Medicine
         this.sharyet_negah = sharyet_negah;
         this.nokte = nokte;
     }
+
+    protected Medicine(Parcel in)
+    {
+        name_tejary = in.readString();
+        goroh_daroei = in.readString();
+        goroh_darmani = in.readString();
+        name_farsi = in.readString();
+        shekl_daroei = in.readString();
+        masraf_hamelegi = in.readString();
+        mavared_masraf = in.readString();
+        mizan_masraf = in.readString();
+        mavared_mane = in.readString();
+        avarez_janebi = in.readString();
+        tavajohat = in.readString();
+        amozesh = in.readString();
+        description = in.readString();
+        sharyet_negah = in.readString();
+        nokte = in.readString();
+    }
+
+    public static final Creator<Medicine> CREATOR = new Creator<Medicine>()
+    {
+        @Override
+        public Medicine createFromParcel(Parcel in)
+        {
+            return new Medicine(in);
+        }
+
+        @Override
+        public Medicine[] newArray(int size)
+        {
+            return new Medicine[size];
+        }
+    };
 
     //GETTER
     public String getName_tejary()
@@ -198,5 +234,32 @@ public class Medicine
     public String toString()
     {
         return this.name_farsi;
+    }
+
+    //implement parcelable
+    @Override
+    public int describeContents()
+    {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeString(name_tejary);
+        dest.writeString(goroh_daroei);
+        dest.writeString(goroh_darmani);
+        dest.writeString(name_farsi);
+        dest.writeString(shekl_daroei);
+        dest.writeString(masraf_hamelegi);
+        dest.writeString(mavared_masraf);
+        dest.writeString(mizan_masraf);
+        dest.writeString(mavared_mane);
+        dest.writeString(avarez_janebi);
+        dest.writeString(tavajohat);
+        dest.writeString(amozesh);
+        dest.writeString(description);
+        dest.writeString(sharyet_negah);
+        dest.writeString(nokte);
     }
 }

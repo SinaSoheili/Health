@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.sinasoheili.view.Medicine_Activity_Item">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/Medicine_Activity_Item_Radius"
+            android:layout_marginRight="@dimen/Medicine_Activity_Item_MarginRight"
+            android:layout_marginLeft="@dimen/Medicine_Activity_Item_MarginLeft"
+            android:layout_marginTop="@dimen/Medicine_Activity_Item_MarginTop"
+            android:layout_marginBottom="@dimen/Medicine_Activity_Item_MarginBottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_name_tejary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:textStyle="italic"
+                    />
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_name_farsi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/Medicine_Activity_Item_Radius"
+            android:layout_marginRight="@dimen/Medicine_Activity_Item_MarginRight"
+            android:layout_marginLeft="@dimen/Medicine_Activity_Item_MarginLeft"
+            android:layout_marginTop="@dimen/Medicine_Activity_Item_MarginTop"
+            android:layout_marginBottom="@dimen/Medicine_Activity_Item_MarginBottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_masraf_hamelegy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:text="مصرف حاملگی :"
+                    />
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_shekl_daroei"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:text="شکل دارویی : "
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/Medicine_Activity_Item_Radius"
+            android:layout_marginRight="@dimen/Medicine_Activity_Item_MarginRight"
+            android:layout_marginLeft="@dimen/Medicine_Activity_Item_MarginLeft"
+            android:layout_marginTop="@dimen/Medicine_Activity_Item_MarginTop"
+            android:layout_marginBottom="@dimen/Medicine_Activity_Item_MarginBottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_mavared_masraf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:text="موارد مصرف : "
+                    />
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_mizan_masraf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:text="میزان مصرف :"
+                    />
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_mavared_mane"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:text="موارد مانع : "
+                    />
+
+                <TextView
+                    android:id="@+id/Medicine_Activity_tv_avarez_janebi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/Medicine_Activity_Item_TextSize"
+                    android:textColor="@color/Medicine_Activity_Item_TextColor"
+                    android:text="عوارض جانبی :"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -19,4 +19,11 @@
     <dimen name="Illness_Activity_Item_MarginTop">10dp</dimen>
     <dimen name="Illness_Activity_Item_MarginBottom">10dp</dimen>
 
+    <dimen name="Medicine_Activity_Item_TextSize">18sp</dimen>
+    <dimen name="Medicine_Activity_Item_Radius">10dp</dimen>
+    <dimen name="Medicine_Activity_Item_MarginRight">15dp</dimen>
+    <dimen name="Medicine_Activity_Item_MarginLeft">15dp</dimen>
+    <dimen name="Medicine_Activity_Item_MarginTop">10dp</dimen>
+    <dimen name="Medicine_Activity_Item_MarginBottom">10dp</dimen>
+
 </resources>

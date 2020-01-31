@@ -29,8 +29,6 @@ public class DashboardPage_Fragment extends Fragment implements Dashboard_page_c
 {
     private Dashboard_page_contract.Dashboard_page_contract_presenter presenter;
 
-    public static final String MEDICINE_KEY_INTENT = "MEDICINE";
-
     private View root_view;
     private Button btn_medicine;
     private Button btn_illness;
@@ -63,10 +61,8 @@ public class DashboardPage_Fragment extends Fragment implements Dashboard_page_c
     {
         if(v.equals(btn_medicine))
         {
-            ArrayList<Medicine> all_item = presenter.get_all_medicine();
             Intent intent = new Intent(this.getContext() , Medicine_List_Activity.class);
-            //TODO : add to extra all item
-            this.startActivity(intent);
+            getActivity().startActivity(intent);
         }
         else if(v.equals(btn_illness))
         {

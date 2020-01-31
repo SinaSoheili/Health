@@ -9,4 +9,6 @@
     <color name="MedicationSchedule_ListItem_text">#292929</color>
 
     <color name="Illness_Activity_Item_TextColor">#292929</color>
+
+    <color name="Medicine_Activity_Item_TextColor">#292929</color>
 </resources>
