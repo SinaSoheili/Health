@@ -55,4 +55,19 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
         return all_items;
     }
 
+    @Override
+    public boolean insert_new_medicationSchedule(MedicationSchedule m)
+    {
+        DB_MedicationSchedule db = new DB_MedicationSchedule(context);
+        Long id = db.insert(m);
+        if(id != -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

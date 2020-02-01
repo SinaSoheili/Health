@@ -17,5 +17,6 @@ public interface Dashboard_page_contract
         public ArrayList<Medicine> get_all_medicine();
         public ArrayList<Illness> get_all_illness();
         public ArrayList<MedicationSchedule> get_all_Medication_Schedule();
+        public boolean insert_new_medicationSchedule(MedicationSchedule m);
     }
 }
