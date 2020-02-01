@@ -63,7 +63,41 @@ public class MedicationSchedule_All_List_Adapter extends ArrayAdapter<Medication
             tv_name.setText(item.getMedicine_name());
             tv_amount.setText(item.getMedicine_amount());
             tv_time.setText(item.getTime());
-            tv_day.setText(item.getDay().toString());
+            tv_day.setText(en_day2fa_day(item.getDay()));
+        }
+
+        private String en_day2fa_day(MedicationSchedule.Day d)
+        {
+            if(d.equals(MedicationSchedule.Day.saturday))
+            {
+                return "شنبه";
+            }
+            else if(d.equals(MedicationSchedule.Day.sunday))
+            {
+                return "یکشنبه";
+            }
+            else if(d.equals(MedicationSchedule.Day.monday))
+            {
+                return "دو شنبه";
+            }
+            else if(d.equals(MedicationSchedule.Day.tuesday))
+            {
+                return "سه شنبه";
+            }
+            else if(d.equals(MedicationSchedule.Day.wednesday))
+            {
+                return "چهار شنبه";
+            }
+            else if(d.equals(MedicationSchedule.Day.thursday))
+            {
+                return "پنج شنبه";
+            }
+            else if(d.equals(MedicationSchedule.Day.friday))
+            {
+                return "جمعه";
+            }
+
+            return null;
         }
     }
 }
