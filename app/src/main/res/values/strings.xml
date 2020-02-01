@@ -11,4 +11,6 @@
 
     <string name="Dashboard_bnt_illness">بیماری ها</string>
 
+    <string name="Dashboard_bnt_medication_schedule">برنامه دارویی</string>
+
 </resources>

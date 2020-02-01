@@ -5,9 +5,7 @@
     <dimen name="MainView_CardView_MarginLeft">15dp</dimen>
     <dimen name="MainView_CardView_MarginTop">15dp</dimen>
     <dimen name="MainView_CardView_MarginBottom">0dp</dimen>
-
     <dimen name="MainView_CardView_Radius">10dp</dimen>
-
     <dimen name="MainView_CardView_Title_TextSize">18sp</dimen>
 
     <dimen name="MedicationSchedule_ListItem_TextSize">18sp</dimen>
@@ -25,6 +23,12 @@
     <dimen name="Medicine_Activity_Item_MarginLeft">15dp</dimen>
     <dimen name="Medicine_Activity_Item_MarginTop">10dp</dimen>
     <dimen name="Medicine_Activity_Item_MarginBottom">10dp</dimen>
+
+    <dimen name="Medication_Schadule_Radius">10dp</dimen>
+    <dimen name="Medication_Schadule_MarginRight">15dp</dimen>
+    <dimen name="Medication_Schadule_MarginLeft">15dp</dimen>
+    <dimen name="Medication_Schadule_MarginTop">15dp</dimen>
+    <dimen name="Medication_Schadule_MarginBottom">10dp</dimen>
 
     <dimen name="Dashboard_Buttn_baorder_radius">10dp</dimen>
 

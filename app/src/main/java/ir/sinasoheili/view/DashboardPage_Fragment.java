@@ -25,13 +25,13 @@ import model.Medicine;
 import presenter.Dashboard_Page_presenter;
 import presenter.Dashboard_page_contract;
 
-public class DashboardPage_Fragment extends Fragment implements Dashboard_page_contract.Dashboard_page_contract_view, View.OnClickListener
+public class DashboardPage_Fragment extends Fragment implements View.OnClickListener
 {
-    private Dashboard_page_contract.Dashboard_page_contract_presenter presenter;
 
     private View root_view;
     private Button btn_medicine;
     private Button btn_illness;
+    private Button btn_medication_schedule;
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -43,9 +43,6 @@ public class DashboardPage_Fragment extends Fragment implements Dashboard_page_c
 
     public void init_obj()
     {
-        //presenter
-        presenter = new Dashboard_Page_presenter(this);
-
         //btn medicine
         btn_medicine = root_view.findViewById(R.id.Dashboard_btn_medicine);
         btn_medicine.setOnClickListener(this);
@@ -53,6 +50,10 @@ public class DashboardPage_Fragment extends Fragment implements Dashboard_page_c
         //btn illness
         btn_illness = root_view.findViewById(R.id.Dashboard_btn_illness);
         btn_illness.setOnClickListener(this);
+
+        //btn medication schedule
+        btn_medication_schedule = root_view.findViewById(R.id.Dashboard_btn_Medication_Schedule);
+        btn_medication_schedule.setOnClickListener(this);
     }
 
     //on click
@@ -69,6 +70,11 @@ public class DashboardPage_Fragment extends Fragment implements Dashboard_page_c
         else if(v.equals(btn_illness))
         {
             Intent intent = new Intent(this.getContext() , Illness_List_Activity.class);
+            getActivity().startActivity(intent);
+        }
+        else if(v.equals(btn_medication_schedule))
+        {
+            Intent intent = new Intent(this.getContext() , Medication_Schedule_Activity.class);
             getActivity().startActivity(intent);
         }
     }

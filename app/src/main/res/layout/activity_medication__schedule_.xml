@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.sinasoheili.view.Medication_Schedule_Activity"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/Medication_Schadule_Radius"
+        android:layout_marginRight="@dimen/Medication_Schadule_MarginRight"
+        android:layout_marginLeft="@dimen/Medication_Schadule_MarginLeft"
+        android:layout_marginTop="@dimen/Medication_Schadule_MarginTop"
+        android:layout_marginBottom="@dimen/Medication_Schadule_MarginBottom">
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ساعت"
+                android:textSize="@dimen/MedicationSchedule_ListItem_TextSize"
+                android:textColor="@color/MedicationSchedule_ListItem_text"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="مقدار"
+                android:textSize="@dimen/MedicationSchedule_ListItem_TextSize"
+                android:textColor="@color/MedicationSchedule_ListItem_text"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="نام دارو"
+                android:textSize="@dimen/MedicationSchedule_ListItem_TextSize"
+                android:textColor="@color/MedicationSchedule_ListItem_text"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="روز"
+                android:textSize="@dimen/MedicationSchedule_ListItem_TextSize"
+                android:textColor="@color/MedicationSchedule_ListItem_text"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/Medication_Schadule_Radius"
+        android:layout_marginRight="@dimen/Medication_Schadule_MarginRight"
+        android:layout_marginLeft="@dimen/Medication_Schadule_MarginLeft"
+        android:layout_marginBottom="@dimen/Medication_Schadule_MarginBottom"
+        android:layout_marginTop="5dp">
+
+        <ListView
+            android:id="@+id/medication_schadule_List_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

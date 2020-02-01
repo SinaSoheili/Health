@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
 import model.DB_Illness;
+import model.DB_MedicationSchedule;
 import model.DB_Medicine;
 import model.Illness;
+import model.MedicationSchedule;
 import model.Medicine;
 
 public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboard_page_contract_presenter
@@ -44,4 +46,13 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
         ArrayList<Illness> all_item = db.get_all();
         return all_item;
     }
+
+    @Override
+    public ArrayList<MedicationSchedule> get_all_Medication_Schedule()
+    {
+        DB_MedicationSchedule db = new DB_MedicationSchedule(context);
+        ArrayList<MedicationSchedule> all_items = db.get_all();
+        return all_items;
+    }
+
 }
