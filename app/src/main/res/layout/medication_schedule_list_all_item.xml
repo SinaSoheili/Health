@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/MedicationSchedule_All_ListItem_edit_btn"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_weight="0.4"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:src="@android:drawable/ic_menu_edit"
+        android:layout_gravity="center_vertical"
+        />
+
     <TextView
         android:id="@+id/MedicationSchedule_All_ListItem_time"
         android:layout_width="0dp"
@@ -15,6 +26,7 @@
         android:textColor="@color/MedicationSchedule_ListItem_text"
         android:layout_margin="4dp"
         android:gravity="center"
+        android:layout_gravity="center_vertical"
         />
 
     <TextView
@@ -27,6 +39,7 @@
         android:textColor="@color/MedicationSchedule_ListItem_text"
         android:layout_margin="4dp"
         android:gravity="center"
+        android:layout_gravity="center_vertical"
         />
 
     <TextView
@@ -39,6 +52,7 @@
         android:textColor="@color/MedicationSchedule_ListItem_text"
         android:layout_margin="4dp"
         android:gravity="center"
+        android:layout_gravity="center_vertical"
         />
 
     <TextView
@@ -51,6 +65,7 @@
         android:textColor="@color/MedicationSchedule_ListItem_text"
         android:layout_margin="4dp"
         android:gravity="center"
+        android:layout_gravity="center_vertical"
         />
 
 </LinearLayout>

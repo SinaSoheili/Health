@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,8 +26,7 @@ import model.MedicationSchedule;
 import presenter.Dashboard_Page_presenter;
 import presenter.Dashboard_page_contract;
 
-public class Medication_Schedule_Activity extends AppCompatActivity implements Dashboard_page_contract.Dashboard_page_contract_view, View.OnClickListener
-{
+public class Medication_Schedule_Activity extends AppCompatActivity implements Dashboard_page_contract.Dashboard_page_contract_view, View.OnClickListener, AdapterView.OnItemClickListener {
     private Dashboard_page_contract.Dashboard_page_contract_presenter presenter;
 
     private ListView listView;
@@ -38,11 +38,14 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
 
     //medication schedule dialog
     private Dialog medication_schedule_dialog_add;
+    private Dialog medication_schedule_dialog_edit;
     private EditText et_name;
     private EditText et_amount;
     private EditText et_time;
     private Spinner  sp_day;
-    private Button   btn_submit;
+    private Button btn_submit_add;
+    private Button btn_submit_edit;
+    private MedicationSchedule old_medicationSchedule = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -68,6 +71,7 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
 
         //list view
         listView = findViewById(R.id.medication_schadule_List_view);
+        listView.setOnItemClickListener(this);
     }
 
     private ArrayList<MedicationSchedule> sort_items(ArrayList<MedicationSchedule> items)
@@ -113,18 +117,46 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
         et_name     = root_view.findViewById(R.id.medication_schedule_dialog_et_name);
         et_amount   = root_view.findViewById(R.id.medication_schedule_dialog_et_amount);
         et_time     = root_view.findViewById(R.id.medication_schedule_dialog_et_time);
-        btn_submit  = root_view.findViewById(R.id.medication_schedule_dialog_btn_submit);
+        btn_submit_add = root_view.findViewById(R.id.medication_schedule_dialog_btn_submit);
         sp_day      = root_view.findViewById(R.id.medication_schedule_dialog_spinner_days);
 
         ArrayAdapter<String> spinner_adapter = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_item , day);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_day.setAdapter(spinner_adapter);
 
-        btn_submit.setOnClickListener(this);
+        btn_submit_add.setOnClickListener(this);
 
         medication_schedule_dialog_add.setContentView(root_view);
         medication_schedule_dialog_add.show();
         medication_schedule_dialog_add.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT , WindowManager.LayoutParams.WRAP_CONTENT);
+    }
+
+    private void show_edit_dialog(MedicationSchedule current_medication_schedule)
+    {
+        medication_schedule_dialog_edit = new Dialog(this);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View root_view = inflater.inflate(R.layout.medication_schedule_dialog , null , false);
+
+        et_name         = root_view.findViewById(R.id.medication_schedule_dialog_et_name);
+        et_amount       = root_view.findViewById(R.id.medication_schedule_dialog_et_amount);
+        et_time         = root_view.findViewById(R.id.medication_schedule_dialog_et_time);
+        btn_submit_edit = root_view.findViewById(R.id.medication_schedule_dialog_btn_submit);
+        sp_day          = root_view.findViewById(R.id.medication_schedule_dialog_spinner_days);
+
+        ArrayAdapter<String> spinner_adapter = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_item , day);
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_day.setAdapter(spinner_adapter);
+
+        et_name.setText(current_medication_schedule.getMedicine_name());
+        et_amount.setText(current_medication_schedule.getMedicine_amount());
+        et_time.setText(current_medication_schedule.getTime());
+        sp_day.setSelection(current_medication_schedule.getDay().ordinal());
+
+        btn_submit_edit.setOnClickListener(this);
+
+        medication_schedule_dialog_edit.setContentView(root_view);
+        medication_schedule_dialog_edit.show();
+        medication_schedule_dialog_edit.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT , WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
     @Override
@@ -134,7 +166,7 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
         {
             show_add_dialog();
         }
-        if(v.equals(btn_submit))
+        else if(v.equals(btn_submit_add))
         {
             boolean valid = medication_shcedule_dialog_is_valid();
             if(valid == true)
@@ -160,13 +192,38 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
                 update_listview(presenter.get_all_Medication_Schedule());
             }
         }
+        else if(v.equals(btn_submit_edit))
+        {
+            if(medication_shcedule_dialog_is_valid())
+            {
+                String name   = et_name.getText().toString();
+                String amount = et_amount.getText().toString();
+                String time   = et_time.getText().toString();
+                String day    = this.day[sp_day.getSelectedItemPosition()];
+
+                MedicationSchedule new_m = new MedicationSchedule(name , amount , time , Day.fa_day2en_day(day));
+
+                boolean result =  presenter.update_medication_Schedule(old_medicationSchedule , new_m);
+                if(result == true)
+                {
+                    Toast.makeText(this, "بروزرسانی انجام شد", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(this, "بروزرسانی انجام نشد!!", Toast.LENGTH_SHORT).show();
+                }
+                medication_schedule_dialog_edit.dismiss();
+                old_medicationSchedule = null;
+                update_listview(presenter.get_all_Medication_Schedule());
+            }
+        }
     }
 
     private boolean medication_shcedule_dialog_is_valid()
     {
-        String name = et_name.getText().toString();
+        String name   = et_name.getText().toString();
         String amount = et_amount.getText().toString();
-        String time = et_time.getText().toString();
+        String time   = et_time.getText().toString();
 
         if(name.isEmpty())
         {
@@ -197,5 +254,16 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
     {
         items = sort_items(items);
         show_list(items);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        if(items == null)
+        {
+            return;
+        }
+        old_medicationSchedule = items.get(position);
+        show_edit_dialog(old_medicationSchedule);
     }
 }

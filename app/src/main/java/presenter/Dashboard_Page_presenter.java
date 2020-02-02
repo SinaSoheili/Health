@@ -67,4 +67,21 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
         }
     }
 
+    @Override
+    public boolean update_medication_Schedule(MedicationSchedule mold , MedicationSchedule mnew)
+    {
+        DB_MedicationSchedule db = new DB_MedicationSchedule(context);
+
+        int count = db.update(mold , mnew);
+
+        if(count == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

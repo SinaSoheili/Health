@@ -24,6 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <Space
+                android:id="@+id/MedicationSchedule_All_ListItem_edit_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:layout_margin="4dp"
+                />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -86,6 +94,8 @@
             android:id="@+id/medication_schadule_List_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             />
 
     </androidx.cardview.widget.CardView>
