@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import model.BloodGlucose;
 import model.BloodPressure;
+import model.Day;
 import model.MedicationSchedule;
 import presenter.Home_page_contract;
 
@@ -32,7 +33,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
 {
     private Home_page_contract.Home_page_presenter presenter_obj;
 
-    private String day[] = {"شنبه" , "یکشنبه" , "دوشنبه" , "سه شنبه" , "چهار شنبه" , "پنجشنبه" , "جمعه"};
+    private String day[] = {Day.en_day2fa_day(Day.saturday) , Day.en_day2fa_day(Day.sunday) , Day.en_day2fa_day(Day.monday) , Day.en_day2fa_day(Day.tuesday) , Day.en_day2fa_day(Day.wednesday) , Day.en_day2fa_day(Day.thursday) , Day.en_day2fa_day(Day.friday)};
     private String time[] = {"قبل صبحانه" , "بعد صبحانه" , "قبل نهار" , "بعد ناهار" , "قبل شام" , "بعد شام" , "قبل خواب"};
 
     private View root_view;
@@ -100,44 +101,39 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     public void show_today_medication_schedule()
     {
         Date d = Calendar.getInstance().getTime();
-        MedicationSchedule.Day today = null;
+        Day today = null;
         switch (d.getDay())
         {
             case 0 :
-                today = MedicationSchedule.Day.sunday;
-                s_today = "یکشنبه";
+                today = Day.sunday;
                 break;
 
             case 1 :
-                today = MedicationSchedule.Day.monday;
-                s_today = "دوشنبه";
+                today = Day.monday;
                 break;
 
             case 2 :
-                today = MedicationSchedule.Day.tuesday;
-                s_today = "سه شنبه";
+                today = Day.tuesday;
                 break;
 
             case 3 :
-                today = MedicationSchedule.Day.wednesday;
-                s_today = "چهار شنبه";
+                today = Day.wednesday;
                 break;
 
             case 4 :
-                today = MedicationSchedule.Day.thursday;
-                s_today = "پنج شنبه";
+                today = Day.thursday;
                 break;
 
             case 5 :
-                today = MedicationSchedule.Day.friday;
-                s_today = "جمعه";
+                today = Day.friday;
                 break;
 
             case 6 :
-                today = MedicationSchedule.Day.saturday;
-                s_today = "شنبه";
+                today = Day.saturday;
                 break;
         }
+
+        s_today = Day.en_day2fa_day(today);
 
         //set day to card view
         MainView_CardView_MedicationSchedule_Title.append("  "+s_today);
@@ -211,7 +207,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         });
     }
 
-    public boolean check_valid_blood_glucose_et()
+    public boolean check_valid_blood_glucose_et() // TODO: make validation code better logic
     {
         boolean f1=true , f2=true , f3=true , f4=true;
 
@@ -300,7 +296,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         });
     }
 
-    public boolean check_valid_blood_pressure_et()
+    public boolean check_valid_blood_pressure_et() // TODO: make validation code better logic
     {
         boolean f1=true , f2=true , f3=true ;
 
@@ -349,7 +345,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                 float blood_glucose_value = Float.valueOf(et_blood_glucoe_value.getText().toString());
                 float insuline_unit_count = Float.valueOf(et_blood_glucoe_unit_count.getText().toString());
                 String insulin_name = et_blood_glucoe_insuline_name.getText().toString();
-                String day = spinner_blood_glucose_day.getSelectedItem().toString();
+                String day = this.day[spinner_blood_glucose_day.getSelectedItemPosition()];
                 String time = spinner_blood_glucose_time.getSelectedItem().toString();
 
                 String sdate[] = et_blood_glucoe_date.getText().toString().split("/");
@@ -380,7 +376,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
             {
                 float systolic = Float.valueOf(et_blood_pressure_sys.getText().toString());
                 float diastolic = Float.valueOf(et_blood_pressure_dias.getText().toString());
-                String day = spinner_blood_pressure_day.getSelectedItem().toString();
+                String day = this.day[spinner_blood_pressure_day.getSelectedItemPosition()];
 
                 String sdate[] = et_blood_pressure_date.getText().toString().split("/");
                 Date date = new Date(Integer.valueOf(sdate[0]) , Integer.valueOf(sdate[1]) , Integer.valueOf(sdate[2]));

@@ -22,7 +22,7 @@ public class app extends Application
     public static final String key_Calories = DB_Calories.getDbName();
 
     @Override
-    public void onCreate()
+    public void onCreate()  // TODO : uses services instade of thread
     {
         super.onCreate();
 

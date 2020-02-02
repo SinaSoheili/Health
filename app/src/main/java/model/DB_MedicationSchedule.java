@@ -31,10 +31,10 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
     {
         String cmd = "CREATE TABLE IF NOT EXISTS '"+TABLE_NAME+"' " +
                 "(" +
-                    MEDICINE_NAME_COLUMN + " TEXT , "+
-                    MEDICINE_AMOUNT_COLUMN + " TEXT , "+
-                    TIME_COLUMN + " TEXT , "+
-                    DAY_COLUMN + " TEXT "+
+                    MEDICINE_NAME_COLUMN    + " TEXT , "+
+                    MEDICINE_AMOUNT_COLUMN  + " TEXT , "+
+                    TIME_COLUMN             + " TEXT , "+
+                    DAY_COLUMN              + " TEXT "+
                 ");";
         db.execSQL(cmd);
     }
@@ -46,7 +46,7 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
     }
 
     //db function's
-    public ArrayList<MedicationSchedule> search (MedicationSchedule.Day day)
+    public ArrayList<MedicationSchedule> search (Day day)
     {
         ArrayList<MedicationSchedule> items = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
@@ -59,14 +59,14 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
         String medicine_name;
         String medicine_amount;
         String time;
-        MedicationSchedule.Day item_day;
+        Day item_day;
 
         for(int i=0 ; i<count ; i++)
         {
             medicine_name = cursor.getString(cursor.getColumnIndex(MEDICINE_NAME_COLUMN));
             medicine_amount = cursor.getString(cursor.getColumnIndex(MEDICINE_AMOUNT_COLUMN));
             time = cursor.getString(cursor.getColumnIndex(TIME_COLUMN));
-            item_day = MedicationSchedule.Day.String2Day(cursor.getString(cursor.getColumnIndex(DAY_COLUMN)));
+            item_day = Day.en_string2en_day(cursor.getString(cursor.getColumnIndex(DAY_COLUMN)));
 
             items.add(new MedicationSchedule(medicine_name , medicine_amount , time , item_day));
 
@@ -89,14 +89,14 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
         String medicine_name;
         String medicine_amount;
         String time;
-        MedicationSchedule.Day item_day;
+        Day item_day;
 
         for(int i=0 ; i<count ; i++)
         {
             medicine_name = cursor.getString(cursor.getColumnIndex(MEDICINE_NAME_COLUMN));
             medicine_amount = cursor.getString(cursor.getColumnIndex(MEDICINE_AMOUNT_COLUMN));
             time = cursor.getString(cursor.getColumnIndex(TIME_COLUMN));
-            item_day = MedicationSchedule.Day.String2Day(cursor.getString(cursor.getColumnIndex(DAY_COLUMN)));
+            item_day = Day.en_string2en_day(cursor.getString(cursor.getColumnIndex(DAY_COLUMN)));
 
             all_item.add(new MedicationSchedule(medicine_name , medicine_amount , time , item_day));
 
@@ -124,16 +124,16 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
     public int update (MedicationSchedule oldms , MedicationSchedule newms)
     {
         SQLiteDatabase db = getReadableDatabase();
-        String wh = MEDICINE_NAME_COLUMN+" = '"+oldms.getMedicine_name()+"' AND "+
-                       MEDICINE_AMOUNT_COLUMN+" = '"+oldms.getMedicine_amount()+"' AND "+
-                       TIME_COLUMN+" = '"+oldms.getTime()+"' AND "+
-                       DAY_COLUMN +" = '"+oldms.getDay().toString()+"'";
+        String wh = MEDICINE_NAME_COLUMN    +" = '"+oldms.getMedicine_name()   +"' AND "+
+                    MEDICINE_AMOUNT_COLUMN  +" = '"+oldms.getMedicine_amount() +"' AND "+
+                    TIME_COLUMN             +" = '"+oldms.getTime()            +"' AND "+
+                    DAY_COLUMN              +" = '"+oldms.getDay().toString()+"'";
 
         ContentValues cv = new ContentValues();
-        cv.put(MEDICINE_NAME_COLUMN , newms.getMedicine_name());
+        cv.put(MEDICINE_NAME_COLUMN   , newms.getMedicine_name());
         cv.put(MEDICINE_AMOUNT_COLUMN , newms.getMedicine_amount());
-        cv.put(TIME_COLUMN , newms.getTime());
-        cv.put(DAY_COLUMN , newms.getDay().toString());
+        cv.put(TIME_COLUMN            , newms.getTime());
+        cv.put(DAY_COLUMN             , newms.getDay().toString());
 
         int count = db.update(TABLE_NAME , cv , wh , null);
         db.close();
@@ -144,10 +144,10 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
     {
         SQLiteDatabase db = getReadableDatabase();
 
-        String wh = MEDICINE_NAME_COLUMN+" = '"+ms.getMedicine_name()+"' AND "+
-                    MEDICINE_AMOUNT_COLUMN+" = '"+ms.getMedicine_amount()+"' AND "+
-                    TIME_COLUMN+" = '"+ms.getTime()+"' AND "+
-                    DAY_COLUMN +" = '"+ms.getDay().toString()+"'";
+        String wh = MEDICINE_NAME_COLUMN      +" = '"+ms.getMedicine_name()+"' AND "+
+                    MEDICINE_AMOUNT_COLUMN    +" = '"+ms.getMedicine_amount()+"' AND "+
+                    TIME_COLUMN               +" = '"+ms.getTime()+"' AND "+
+                    DAY_COLUMN                +" = '"+ms.getDay().toString()+"'";
 
         int count = db.delete(TABLE_NAME , wh , null);
         db.close();

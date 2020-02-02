@@ -12,7 +12,8 @@ import model.Medicine;
 import presenter.Dashboard_Page_presenter;
 import presenter.Dashboard_page_contract;
 
-public class Medicine_List_Activity extends AppCompatActivity implements Dashboard_page_contract.Dashboard_page_contract_view, AdapterView.OnItemClickListener {
+public class Medicine_List_Activity extends AppCompatActivity implements Dashboard_page_contract.Dashboard_page_contract_view, AdapterView.OnItemClickListener
+{
     public static final String MEDICINE_KEY_INTENT = "MEDICINE";
 
     private Dashboard_Page_presenter presenter;

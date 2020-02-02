@@ -11,6 +11,7 @@ import model.BloodPressure;
 import model.DB_BloodGlucose;
 import model.DB_BloodPressure;
 import model.DB_MedicationSchedule;
+import model.Day;
 import model.MedicationSchedule;
 
 public class Home_page_presenter implements Home_page_contract.Home_page_presenter
@@ -25,7 +26,7 @@ public class Home_page_presenter implements Home_page_contract.Home_page_present
     }
 
     @Override
-    public ArrayList<MedicationSchedule> get_Medication_schedule(MedicationSchedule.Day day)
+    public ArrayList<MedicationSchedule> get_Medication_schedule(Day day)
     {
         DB_MedicationSchedule db = new DB_MedicationSchedule(context);
 

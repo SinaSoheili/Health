@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import model.BloodGlucose;
 import model.BloodPressure;
+import model.Day;
 import model.MedicationSchedule;
 
 public interface Home_page_contract
@@ -21,7 +22,7 @@ public interface Home_page_contract
 
     public interface Home_page_presenter
     {
-        public ArrayList<MedicationSchedule> get_Medication_schedule(MedicationSchedule.Day day);
+        public ArrayList<MedicationSchedule> get_Medication_schedule(Day day);
 
         public ArrayList<MedicationSchedule> get_Medication_schedule_all_item();
 

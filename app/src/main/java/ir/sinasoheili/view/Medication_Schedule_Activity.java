@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import model.Day;
 import model.MedicationSchedule;
 import presenter.Dashboard_Page_presenter;
 import presenter.Dashboard_page_contract;
@@ -32,6 +33,8 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
     private FloatingActionButton btn_add;
 
     private ArrayList<MedicationSchedule> items;
+
+    private String day[] = {Day.en_day2fa_day(Day.saturday) , Day.en_day2fa_day(Day.sunday) , Day.en_day2fa_day(Day.monday) , Day.en_day2fa_day(Day.tuesday) , Day.en_day2fa_day(Day.wednesday) , Day.en_day2fa_day(Day.thursday) , Day.en_day2fa_day(Day.friday)};
 
     //medication schedule dialog
     private Dialog medication_schedule_dialog_add;
@@ -71,12 +74,11 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
     {
         ArrayList<MedicationSchedule> sorted_item = new ArrayList<>();
 
-        MedicationSchedule.Day all_day[] = {MedicationSchedule.Day.saturday , MedicationSchedule.Day.sunday    , MedicationSchedule.Day.monday   ,
-                                          MedicationSchedule.Day.tuesday  , MedicationSchedule.Day.wednesday , MedicationSchedule.Day.thursday , MedicationSchedule.Day.friday };
+        Day all_day[] = {Day.saturday , Day.sunday    , Day.monday   , Day.tuesday  , Day.wednesday , Day.thursday , Day.friday };
 
         for(int i=0 ; i<all_day.length ; i++)
         {
-            MedicationSchedule.Day current_day = all_day[i];
+            Day current_day = all_day[i];
 
             for(int j=0 ; j<items.size() ; j++)
             {
@@ -102,6 +104,29 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
         listView.setAdapter(adapter);
     }
 
+    private void show_add_dialog()
+    {
+        medication_schedule_dialog_add = new Dialog(this);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View root_view = inflater.inflate(R.layout.medication_schedule_dialog , null , false);
+
+        et_name     = root_view.findViewById(R.id.medication_schedule_dialog_et_name);
+        et_amount   = root_view.findViewById(R.id.medication_schedule_dialog_et_amount);
+        et_time     = root_view.findViewById(R.id.medication_schedule_dialog_et_time);
+        btn_submit  = root_view.findViewById(R.id.medication_schedule_dialog_btn_submit);
+        sp_day      = root_view.findViewById(R.id.medication_schedule_dialog_spinner_days);
+
+        ArrayAdapter<String> spinner_adapter = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_item , day);
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_day.setAdapter(spinner_adapter);
+
+        btn_submit.setOnClickListener(this);
+
+        medication_schedule_dialog_add.setContentView(root_view);
+        medication_schedule_dialog_add.show();
+        medication_schedule_dialog_add.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT , WindowManager.LayoutParams.WRAP_CONTENT);
+    }
+
     @Override
     public void onClick(View v)
     {
@@ -114,12 +139,12 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
             boolean valid = medication_shcedule_dialog_is_valid();
             if(valid == true)
             {
-                String name = et_name.getText().toString();
+                String name   = et_name.getText().toString();
                 String amount = et_amount.getText().toString();
-                String time = et_time.getText().toString();
-                String day = sp_day.getSelectedItem().toString();
+                String time   = et_time.getText().toString();
+                String day    = this.day[sp_day.getSelectedItemPosition()];
 
-                MedicationSchedule m = new MedicationSchedule(name , amount , time , fa_string2Day(day));
+                MedicationSchedule m = new MedicationSchedule(name , amount , time , Day.fa_day2en_day(day));
 
                 boolean b = presenter.insert_new_medicationSchedule(m);
                 if(b == true)
@@ -135,30 +160,6 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
                 update_listview(presenter.get_all_Medication_Schedule());
             }
         }
-    }
-
-    private void show_add_dialog()
-    {
-        medication_schedule_dialog_add = new Dialog(this);
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View root_view = inflater.inflate(R.layout.medication_schedule_dialog , null , false);
-
-        et_name     = root_view.findViewById(R.id.medication_schedule_dialog_et_name);
-        et_amount   = root_view.findViewById(R.id.medication_schedule_dialog_et_amount);
-        et_time     = root_view.findViewById(R.id.medication_schedule_dialog_et_time);
-        btn_submit  = root_view.findViewById(R.id.medication_schedule_dialog_btn_submit);
-        sp_day      = root_view.findViewById(R.id.medication_schedule_dialog_spinner_days);
-
-        String days[] = {"شنبه" , "یکشنبه" , "دوشنبه" , "سه شنبه" , "چهار شنبه" , "پنج شنبه" , "جمعه" };
-        ArrayAdapter<String> spinner_adapter = new ArrayAdapter<>(this , android.R.layout.simple_spinner_item , days);
-        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_day.setAdapter(spinner_adapter);
-
-        btn_submit.setOnClickListener(this);
-
-        medication_schedule_dialog_add.setContentView(root_view);
-        medication_schedule_dialog_add.show();
-        medication_schedule_dialog_add.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT , WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
     private boolean medication_shcedule_dialog_is_valid()
@@ -190,41 +191,6 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
         }
 
         return true;
-    }
-
-    private MedicationSchedule.Day fa_string2Day(String day)
-    {
-
-        if(day.equals("شنبه"))
-        {
-            return MedicationSchedule.Day.saturday;
-        }
-        else if(day.equals("یکشنبه"))
-        {
-            return MedicationSchedule.Day.sunday;
-        }
-        else if(day.equals("دو شنبه"))
-        {
-            return MedicationSchedule.Day.monday;
-        }
-        else if(day.equals("سه شنبه"))
-        {
-            return MedicationSchedule.Day.tuesday;
-        }
-        else if(day.equals("چهار شنبه"))
-        {
-            return MedicationSchedule.Day.wednesday;
-        }
-        else if(day.equals("پنج شنبه"))
-        {
-            return MedicationSchedule.Day.thursday;
-        }
-        else if(day.equals("جمعه"))
-        {
-            return MedicationSchedule.Day.friday;
-        }
-
-        return null;
     }
 
     public void update_listview(ArrayList<MedicationSchedule> items)

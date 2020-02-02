@@ -36,13 +36,13 @@ public class DB_BloodGlucose extends SQLiteOpenHelper
     {
         String cmd = "CREATE TABLE IF NOT EXISTS '"+TABLE_NAME+"' "+
                 "(" +
-                    BLOOD_GLUCOSE_VALUE_COLUMN+" FLOAT ,"+
-                    INSULINE_UNIT_COUNT_COLUMN+" FLOAT ,"+
-                    INSULINE_NAME_COLUMN+" TEXT ,"+
-                    DAY_COLUMN+" TEXT ,"+
-                    TIME_COLUMN+" TEXT ,"+
-                    DATE_COLUMN+" DATE ,"+
-                    ID_COLUMN+" INTEGER PRIMARY KEY AUTOINCREMENT"+
+                    BLOOD_GLUCOSE_VALUE_COLUMN +" FLOAT ,"+
+                    INSULINE_UNIT_COUNT_COLUMN +" FLOAT ,"+
+                    INSULINE_NAME_COLUMN       +" TEXT ," +
+                    DAY_COLUMN                 +" TEXT ," +
+                    TIME_COLUMN                +" TEXT ," +
+                    DATE_COLUMN                +" DATE ," +
+                    ID_COLUMN                  +" INTEGER PRIMARY KEY AUTOINCREMENT"+
                 ");";
         db.execSQL(cmd);
     }

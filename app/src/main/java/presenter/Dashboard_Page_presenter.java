@@ -1,12 +1,9 @@
 package presenter;
 
-import android.app.Activity;
 import android.content.Context;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
-
 import model.DB_Illness;
 import model.DB_MedicationSchedule;
 import model.DB_Medicine;
