@@ -34,8 +34,9 @@ public class DB_MedicationSchedule extends SQLiteOpenHelper
                     MEDICINE_NAME_COLUMN    + " TEXT , "+
                     MEDICINE_AMOUNT_COLUMN  + " TEXT , "+
                     TIME_COLUMN             + " TEXT , "+
-                    DAY_COLUMN              + " TEXT "+
-                ");";
+                    DAY_COLUMN              + " TEXT , "+
+                    "primary key ("+MEDICINE_NAME_COLUMN+","+MEDICINE_AMOUNT_COLUMN+","+TIME_COLUMN+","+DAY_COLUMN+")"+
+                ")";
         db.execSQL(cmd);
     }
 
