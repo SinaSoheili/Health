@@ -45,6 +45,7 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
     private Spinner  sp_day;
     private Button btn_submit_add;
     private Button btn_submit_edit;
+    private Button btn_submit_delete;
     private MedicationSchedule old_medicationSchedule = null;
 
     @Override
@@ -112,7 +113,7 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
     {
         medication_schedule_dialog_add = new Dialog(this);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View root_view = inflater.inflate(R.layout.medication_schedule_dialog , null , false);
+        View root_view = inflater.inflate(R.layout.medication_schedule_add_dialog, null , false);
 
         et_name     = root_view.findViewById(R.id.medication_schedule_dialog_et_name);
         et_amount   = root_view.findViewById(R.id.medication_schedule_dialog_et_amount);
@@ -135,13 +136,14 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
     {
         medication_schedule_dialog_edit = new Dialog(this);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View root_view = inflater.inflate(R.layout.medication_schedule_dialog , null , false);
+        View root_view = inflater.inflate(R.layout.medication_schedule_edit_dialog, null , false);
 
-        et_name         = root_view.findViewById(R.id.medication_schedule_dialog_et_name);
-        et_amount       = root_view.findViewById(R.id.medication_schedule_dialog_et_amount);
-        et_time         = root_view.findViewById(R.id.medication_schedule_dialog_et_time);
-        btn_submit_edit = root_view.findViewById(R.id.medication_schedule_dialog_btn_submit);
-        sp_day          = root_view.findViewById(R.id.medication_schedule_dialog_spinner_days);
+        et_name           = root_view.findViewById(R.id.medication_schedule_edit_dialog_et_name);
+        et_amount         = root_view.findViewById(R.id.medication_schedule_edit_dialog_et_amount);
+        et_time           = root_view.findViewById(R.id.medication_schedule_edit_dialog_et_time);
+        btn_submit_edit   = root_view.findViewById(R.id.medication_schedule_edit_dialog_btn_submit);
+        btn_submit_delete = root_view.findViewById(R.id.medication_schedule_edit_dialog_btn_delete);
+        sp_day            = root_view.findViewById(R.id.medication_schedule_edit_dialog_spinner_days);
 
         ArrayAdapter<String> spinner_adapter = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_item , day);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -153,6 +155,7 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
         sp_day.setSelection(current_medication_schedule.getDay().ordinal());
 
         btn_submit_edit.setOnClickListener(this);
+        btn_submit_delete.setOnClickListener(this);
 
         medication_schedule_dialog_edit.setContentView(root_view);
         medication_schedule_dialog_edit.show();
@@ -189,7 +192,8 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
                 }
 
                 medication_schedule_dialog_add.dismiss();
-                update_listview(presenter.get_all_Medication_Schedule());
+                items = presenter.get_all_Medication_Schedule();
+                update_listview(items);
             }
         }
         else if(v.equals(btn_submit_edit))
@@ -214,7 +218,34 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
                 }
                 medication_schedule_dialog_edit.dismiss();
                 old_medicationSchedule = null;
-                update_listview(presenter.get_all_Medication_Schedule());
+                items = presenter.get_all_Medication_Schedule();
+                update_listview(items);
+            }
+        }
+        else if(v.equals(btn_submit_delete))
+        {
+            if(medication_shcedule_dialog_is_valid())
+            {
+                String name   = et_name.getText().toString();
+                String amount = et_amount.getText().toString();
+                String time   = et_time.getText().toString();
+                String day    = this.day[sp_day.getSelectedItemPosition()];
+
+                MedicationSchedule new_m = new MedicationSchedule(name , amount , time , Day.fa_day2en_day(day));
+
+                boolean result =  presenter.delete_medication_Schedule(old_medicationSchedule);
+                if(result == true)
+                {
+                    Toast.makeText(this, "حذف شد", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(this, "حذف نشد!!", Toast.LENGTH_SHORT).show();
+                }
+                medication_schedule_dialog_edit.dismiss();
+                old_medicationSchedule = null;
+                items = presenter.get_all_Medication_Schedule();
+                update_listview(items);
             }
         }
     }

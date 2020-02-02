@@ -84,4 +84,21 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
         }
     }
 
+    @Override
+    public boolean delete_medication_Schedule(MedicationSchedule m)
+    {
+        DB_MedicationSchedule db = new DB_MedicationSchedule(context);
+
+        int count = db.delete(m);
+
+        if(count == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

@@ -19,5 +19,6 @@ public interface Dashboard_page_contract
         public ArrayList<MedicationSchedule> get_all_Medication_Schedule();
         public boolean insert_new_medicationSchedule(MedicationSchedule m);
         public boolean update_medication_Schedule(MedicationSchedule mold , MedicationSchedule mnew);
+        public boolean delete_medication_Schedule(MedicationSchedule m);
     }
 }
