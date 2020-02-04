@@ -56,6 +56,20 @@
             android:textSize="@dimen/MainView_CardView_Title_TextSize"
             />
 
+
+        <Button
+            android:id="@+id/Dashboard_btn_bloodPressure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/dashboard_button_boarder"
+            android:textColor="@color/MainView_CardView_Title"
+            android:text="@string/Dashboard_btn_bloodPressure"
+            android:textSize="@dimen/MainView_CardView_Title_TextSize"
+            />
+
     </LinearLayout>
 
     <LinearLayout

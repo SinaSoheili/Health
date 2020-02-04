@@ -13,6 +13,8 @@
 
     <string name="Dashboard_btn_bloodGlucose">تاریخچه قند خون</string>
 
+    <string name="Dashboard_btn_bloodPressure">تاریخچه فشار خون</string>
+
     <string name="Dashboard_btn_medication_schedule">برنامه دارویی</string>
 
 </resources>
