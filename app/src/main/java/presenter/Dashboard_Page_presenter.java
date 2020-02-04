@@ -4,6 +4,9 @@ import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
+
+import model.BloodGlucose;
+import model.DB_BloodGlucose;
 import model.DB_Illness;
 import model.DB_MedicationSchedule;
 import model.DB_Medicine;
@@ -99,6 +102,14 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
         {
             return false;
         }
+    }
+
+    @Override
+    public ArrayList<BloodGlucose> get_all_blood_glucose()
+    {
+        DB_BloodGlucose db = new DB_BloodGlucose(context);
+        ArrayList<BloodGlucose> all_item = db.get_all();
+        return all_item;
     }
 
 }

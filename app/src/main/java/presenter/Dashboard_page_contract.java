@@ -2,6 +2,7 @@ package presenter;
 
 import java.util.ArrayList;
 
+import model.BloodGlucose;
 import model.Illness;
 import model.MedicationSchedule;
 import model.Medicine;
@@ -20,5 +21,6 @@ public interface Dashboard_page_contract
         public boolean insert_new_medicationSchedule(MedicationSchedule m);
         public boolean update_medication_Schedule(MedicationSchedule mold , MedicationSchedule mnew);
         public boolean delete_medication_Schedule(MedicationSchedule m);
+        public ArrayList<BloodGlucose> get_all_blood_glucose();
     }
 }

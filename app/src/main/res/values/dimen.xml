@@ -32,4 +32,7 @@
 
     <dimen name="Dashboard_Buttn_baorder_radius">10dp</dimen>
 
+    <dimen name="Blood_Glucose_History_List_Item_tv_textsize">15sp</dimen>
+    <dimen name="Blood_Glucose_History_List_Item_tv_padding">4dp</dimen>
+
 </resources>

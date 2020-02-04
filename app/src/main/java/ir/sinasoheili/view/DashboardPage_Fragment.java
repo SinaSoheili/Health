@@ -32,6 +32,7 @@ public class DashboardPage_Fragment extends Fragment implements View.OnClickList
     private Button btn_medicine;
     private Button btn_illness;
     private Button btn_medication_schedule;
+    private Button btn_blood_glucose_history;
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -54,6 +55,10 @@ public class DashboardPage_Fragment extends Fragment implements View.OnClickList
         //btn medication schedule
         btn_medication_schedule = root_view.findViewById(R.id.Dashboard_btn_Medication_Schedule);
         btn_medication_schedule.setOnClickListener(this);
+
+        //btn blood glucose history
+        btn_blood_glucose_history = root_view.findViewById(R.id.Dashboard_btn_bloodGlucose);
+        btn_blood_glucose_history.setOnClickListener(this);
     }
 
     //on click
@@ -75,6 +80,11 @@ public class DashboardPage_Fragment extends Fragment implements View.OnClickList
         else if(v.equals(btn_medication_schedule))
         {
             Intent intent = new Intent(this.getContext() , Medication_Schedule_Activity.class);
+            getActivity().startActivity(intent);
+        }
+        else if(v.equals(btn_blood_glucose_history))
+        {
+            Intent intent = new Intent(this.getContext() , Blood_Glucose_History.class);
             getActivity().startActivity(intent);
         }
     }

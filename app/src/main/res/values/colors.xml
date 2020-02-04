@@ -14,4 +14,6 @@
 
     <color name="Dashboard_Buttn_baorder_color_stroke">#292929</color>
 
+    <color name="Blood_Glucose_History_List_Item_tv_textcolor">#292929</color>
+
 </resources>

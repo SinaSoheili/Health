@@ -7,10 +7,12 @@
 
     <string name="MainView_CardView_BloodPressure_Title">ثبت فشار خون</string>
 
-    <string name="Dashboard_bnt_medicine">دارو ها</string>
+    <string name="Dashboard_btn_medicine">دارو ها</string>
 
-    <string name="Dashboard_bnt_illness">بیماری ها</string>
+    <string name="Dashboard_btn_illness">بیماری ها</string>
 
-    <string name="Dashboard_bnt_medication_schedule">برنامه دارویی</string>
+    <string name="Dashboard_btn_bloodGlucose">تاریخچه قند خون</string>
+
+    <string name="Dashboard_btn_medication_schedule">برنامه دارویی</string>
 
 </resources>

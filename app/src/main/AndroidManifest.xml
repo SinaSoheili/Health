@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Medication_Schedule_Activity"></activity>
+        <activity android:name=".Blood_Glucose_History"></activity>
+        <activity android:name=".Medication_Schedule_Activity" />
         <activity android:name=".Medicine_Activity_Item" />
         <activity android:name=".Illness_Activivty_Item" />
         <activity android:name=".Illness_List_Activity" />
