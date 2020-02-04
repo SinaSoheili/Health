@@ -2,6 +2,12 @@ package ir.sinasoheili.view;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,13 +29,15 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
 import model.BloodGlucose;
 import model.BloodPressure;
 import model.Day;
 import model.MedicationSchedule;
 import presenter.Home_page_contract;
 
-public class HomePage_Fragment extends Fragment implements Home_page_contract.Main_page_view, View.OnClickListener
+public class HomePage_Fragment extends Fragment implements Home_page_contract.Main_page_view, View.OnClickListener , SensorEventListener
 {
     private Home_page_contract.Home_page_presenter presenter_obj;
 
@@ -64,6 +72,13 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     private Spinner  spinner_blood_pressure_day;
     private Button btn_blood_pressure_submit;
 
+    //step Counter
+    public static final String PREF_FILE_MAX_STEP_NAME = "MAX_STEP_PREF_FILE";
+    public static final String PREF_KEY_MAX_STEP = "MAX_STEP";
+    private CircularProgressIndicator circule_progress;
+    private SensorManager smanager;
+    private Sensor sensor;
+    private TextView tv_stepCounter_support;
 
     @Nullable
     @Override
@@ -76,6 +91,29 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         show_today_medication_schedule();
 
         return root_view;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        if(sensor == null)
+        {
+            tv_stepCounter_support.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            smanager.registerListener(this , sensor , smanager.SENSOR_DELAY_UI);
+        }
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+
+        smanager.unregisterListener(this);
     }
 
     private void init_obj()
@@ -94,6 +132,22 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         //blood pressure register
         tv_BloodPressure_register = root_view.findViewById(R.id.MainView_BloodPressure_Title);
         tv_BloodPressure_register.setOnClickListener(this);
+
+        //step counter
+        smanager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
+        sensor = smanager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        circule_progress = root_view.findViewById(R.id.progress_circular);
+        circule_progress.setDirection(CircularProgressIndicator.DIRECTION_CLOCKWISE);
+        tv_stepCounter_support = root_view.findViewById(R.id.tv_stepcounter_dont_support);
+        circule_progress.setProgressTextAdapter(new CircularProgressIndicator.ProgressTextAdapter()
+        {
+            @NonNull
+            @Override
+            public String formatText(double currentProgress)
+            {
+                return ((int)currentProgress+"\nStep");
+            }
+        });
     }
 
     //contract function's
@@ -395,5 +449,19 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                 Blood_Pressure_Dialog.dismiss();
             }
         }
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event)
+    {
+        SharedPreferences pref = getContext().getSharedPreferences(PREF_FILE_MAX_STEP_NAME, Context.MODE_PRIVATE);
+        int max_step = pref.getInt(PREF_KEY_MAX_STEP, 6000);
+
+        circule_progress.setProgress(event.values[0] , max_step);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy)
+    {
     }
 }
