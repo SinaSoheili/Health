@@ -45,7 +45,14 @@ public class Blood_Glucose_History extends AppCompatActivity implements Dashboar
         init_obj();
         init_viewpager();
 
-        //TODO : is start chart don't show
+        viewpager.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                Blood_Glucose_History.this.onPageSelected(0);
+            }
+        });
     }
 
     private void init_obj()
