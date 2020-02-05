@@ -261,43 +261,34 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         });
     }
 
-    public boolean check_valid_blood_glucose_et() // TODO: make validation code better logic
+    public boolean check_valid_blood_glucose_et()
     {
-        boolean f1=true , f2=true , f3=true , f4=true;
-
         if(et_blood_glucoe_value.getText().toString().isEmpty())
         {
             et_blood_glucoe_value.setError("لطفا این قسمت را پر کنید!");
             et_blood_glucoe_value.requestFocus();
-            f1 = false;
+            return false;
         }
         else if(et_blood_glucoe_date.getText().toString().isEmpty())
         {
             et_blood_glucoe_date.setError("لطفا این قسمت را پر کنید!");
             et_blood_glucoe_date.requestFocus();
-            f2 = false;
+            return false;
         }
         else if(et_blood_glucoe_insuline_name.getText().toString().isEmpty())
         {
             et_blood_glucoe_insuline_name.setError("لطفا این قسمت را پر کنید!");
             et_blood_glucoe_insuline_name.requestFocus();
-            f3 = false;
+            return false;
         }
         else if(et_blood_glucoe_unit_count.getText().toString().isEmpty())
         {
             et_blood_glucoe_unit_count.setError("لطفا این قسمت را پر کنید!");
             et_blood_glucoe_unit_count.requestFocus();
-            f4 = false;
-        }
-
-        if(f1 == f2 == f3 == f4 == true)
-        {
-            return true;
-        }
-        else
-        {
             return false;
         }
+
+        return true;
     }
 
     //dialog register blood prssure
@@ -350,37 +341,28 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         });
     }
 
-    public boolean check_valid_blood_pressure_et() // TODO: make validation code better logic
+    public boolean check_valid_blood_pressure_et()
     {
-        boolean f1=true , f2=true , f3=true ;
-
         if(et_blood_pressure_dias.getText().toString().isEmpty())
         {
             et_blood_pressure_dias.setError("لطفا این قسمت را پر کنید!");
             et_blood_pressure_dias.requestFocus();
-            f1 = false;
+            return false;
         }
         else if(et_blood_pressure_sys.getText().toString().isEmpty())
         {
             et_blood_pressure_sys.setError("لطفا این قسمت را پر کنید!");
             et_blood_pressure_sys.requestFocus();
-            f2 = false;
+            return false;
         }
         else if(et_blood_pressure_date.getText().toString().isEmpty())
         {
             et_blood_pressure_date.setError("لطفا این قسمت را پر کنید!");
             et_blood_pressure_date.requestFocus();
-            f3 = false;
-        }
-
-        if(f1 == f2 == f3 == true)
-        {
-            return true;
-        }
-        else
-        {
             return false;
         }
+
+        return true;
     }
 
     //on click
