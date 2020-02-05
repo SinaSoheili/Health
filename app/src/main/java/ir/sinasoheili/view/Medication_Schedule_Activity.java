@@ -74,6 +74,7 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
         //list view
         listView = findViewById(R.id.medication_schadule_List_view);
         listView.setOnItemClickListener(this);
+        listView.setDividerHeight(4);
     }
 
     private ArrayList<MedicationSchedule> sort_items(ArrayList<MedicationSchedule> items)
