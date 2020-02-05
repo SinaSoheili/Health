@@ -49,13 +49,13 @@ public enum Day
                 return monday;
 
             case "سه شنبه":
-                return thursday;
+                return tuesday;
 
             case "چهارشنبه":
                 return wednesday;
 
             case "پنجشنبه":
-                return tuesday;
+                return thursday;
 
             case "جمعه":
                 return friday;
