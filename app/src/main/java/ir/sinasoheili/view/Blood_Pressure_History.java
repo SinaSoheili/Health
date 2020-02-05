@@ -117,6 +117,7 @@ public class Blood_Pressure_History extends AppCompatActivity implements Dashboa
             View view_log = viewpager.getChildAt(1);
 
             listview = findViewById(R.id.Blood_Pressure_history_listview_log);
+            listview.setDivider(null);
 
             Blood_Pressure_History_List_Adapter adapter = new Blood_Pressure_History_List_Adapter(this , all_item);
             listview.setAdapter(adapter);

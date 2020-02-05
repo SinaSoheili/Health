@@ -42,11 +42,27 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
     }
 
     @Override
+    public ArrayList<Medicine> search_medicine(String query)
+    {
+        DB_Medicine db = new DB_Medicine(context);
+        ArrayList<Medicine> items = db.search(query);
+        return items;
+    }
+
+    @Override
     public ArrayList<Illness> get_all_illness()
     {
         DB_Illness db = new DB_Illness(context);
         ArrayList<Illness> all_item = db.get_all();
         return all_item;
+    }
+
+    @Override
+    public ArrayList<Illness> search_illness(String query)
+    {
+        DB_Illness db = new DB_Illness(context);
+        ArrayList<Illness> items = db.search(query);
+        return items;
     }
 
     @Override
