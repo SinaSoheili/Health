@@ -26,7 +26,8 @@ import model.MedicationSchedule;
 import presenter.Dashboard_Page_presenter;
 import presenter.Dashboard_page_contract;
 
-public class Medication_Schedule_Activity extends AppCompatActivity implements Dashboard_page_contract.Dashboard_page_contract_view, View.OnClickListener, AdapterView.OnItemClickListener {
+public class Medication_Schedule_Activity extends AppCompatActivity implements Dashboard_page_contract.Dashboard_page_contract_view, View.OnClickListener, AdapterView.OnItemClickListener
+{
     private Dashboard_page_contract.Dashboard_page_contract_presenter presenter;
 
     private ListView listView;
@@ -283,8 +284,8 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
 
     public void update_listview(ArrayList<MedicationSchedule> items)
     {
-        items = sort_items(items);
-        show_list(items);
+        this.items = sort_items(items);
+        show_list(this.items);
     }
 
     @Override
