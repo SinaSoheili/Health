@@ -1,6 +1,8 @@
 package ir.sinasoheili.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +27,7 @@ import model.Illness;
 import model.Medicine;
 import presenter.Dashboard_Page_presenter;
 import presenter.Dashboard_page_contract;
+import presenter.app;
 
 public class DashboardPage_Fragment extends Fragment implements View.OnClickListener
 {
@@ -70,15 +74,28 @@ public class DashboardPage_Fragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v)
     {
-        //TODO : check db's copy ? if they copied show list's
-
         if(v.equals(btn_medicine))
         {
+            SharedPreferences pref = getContext().getSharedPreferences(app.pref_name , Context.MODE_PRIVATE);
+            boolean result_copy = pref.getBoolean(app.key_medicins , false);
+            if(result_copy == false)
+            {
+                Toast.makeText(root_view.getContext() , "لطفا تا کامل شدن انتقال اطلاعت منتظر بمانید ..." , Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent(this.getContext() , Medicine_List_Activity.class);
             getActivity().startActivity(intent);
         }
         else if(v.equals(btn_illness))
         {
+            SharedPreferences pref = getContext().getSharedPreferences(app.pref_name , Context.MODE_PRIVATE);
+            boolean result_copy = pref.getBoolean(app.key_illness , false);
+            if(result_copy == false)
+            {
+                Toast.makeText(root_view.getContext() , "لطفا تا کامل شدن انتقال اطلاعت منتظر بمانید ..." , Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Intent intent = new Intent(this.getContext() , Illness_List_Activity.class);
             getActivity().startActivity(intent);
         }
