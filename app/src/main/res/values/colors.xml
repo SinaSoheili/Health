@@ -18,4 +18,7 @@
 
     <color name="Blood_Pressure_History_List_Item_tv_textcolor">#292929</color>
 
+    <color name="Button_Submit_Background_Submit_Solid">#CFE7FF</color>
+    <color name="Button_Submit_Background_Submit_Stroke">#CFE7FF</color>
+
 </resources>

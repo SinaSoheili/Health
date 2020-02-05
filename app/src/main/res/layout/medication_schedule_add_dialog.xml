@@ -58,6 +58,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="10dp"
         android:text="ذخیره"
+        android:background="@drawable/button_submit_backgrount"
         />
 
 </LinearLayout>
