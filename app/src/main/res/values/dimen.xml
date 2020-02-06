@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="MainView_CardView_MarginRight">15dp</dimen>
-    <dimen name="MainView_CardView_MarginLeft">15dp</dimen>
-    <dimen name="MainView_CardView_MarginTop">15dp</dimen>
-    <dimen name="MainView_CardView_MarginBottom">0dp</dimen>
-    <dimen name="MainView_CardView_Radius">10dp</dimen>
-    <dimen name="MainView_CardView_Title_TextSize">18sp</dimen>
+    <dimen name="HomePageLayout_CardView_MarginRight">15dp</dimen>
+    <dimen name="HomePageLayout_CardView_MarginLeft">15dp</dimen>
+    <dimen name="HomePageLayout_CardView_MarginTop">10dp</dimen>
+    <dimen name="HomePageLayout_CardView_MarginBottom">5dp</dimen>
+    <dimen name="HomePageLayout_CardView_Radius">10dp</dimen>
+    <dimen name="HomePageLayout_CardView_Title_TextSize">18sp</dimen>
 
     <dimen name="MedicationSchedule_ListItem_TextSize">18sp</dimen>
 
@@ -34,5 +34,12 @@
 
     <dimen name="Blood_Glucose_History_List_Item_tv_textsize">15sp</dimen>
     <dimen name="Blood_Glucose_History_List_Item_tv_padding">4dp</dimen>
+
+    <dimen name="Dashboard_ImageView_Width">150dp</dimen>
+    <dimen name="Dashboard_ImageView_Height">150dp</dimen>
+    <dimen name="Dashboard_ImageView_Padding">30dp</dimen>
+
+    <dimen name="Dashboard_CardView_Margin">6dp</dimen>
+    <dimen name="Dashboard_CardView_redius">10dp</dimen>
 
 </resources>

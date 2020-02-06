@@ -3,9 +3,9 @@
 
     <string name="MainView_CardView_Medication_Title">برنامه دارویی روز : </string>
 
-    <string name="MainView_CardView_BloodGlucose_Title">ثبت قند خون</string>
+    <string name="MainView_CardView_BloodGlucose_Title">قند خون</string>
 
-    <string name="MainView_CardView_BloodPressure_Title">ثبت فشار خون</string>
+    <string name="MainView_CardView_BloodPressure_Title">فشار خون</string>
 
     <string name="Dashboard_btn_medicine">دارو ها</string>
 

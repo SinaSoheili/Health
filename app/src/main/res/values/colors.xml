@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FFA92B</color>
 
-    <color name="MainView_CardView_Title">#1B1B1B</color>
+    <color name="Home_Page_Layout_CardView_Title">#1B1B1B</color>
 
     <color name="MedicationSchedule_ListItem_text">#292929</color>
 

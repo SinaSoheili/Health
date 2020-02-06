@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     private String s_today = "";
 
     //blood glucose register
-    private TextView tv_BloodGlucose_register;
+    private CardView cv_BloodGlucose_register;
     private EditText et_blood_glucoe_value;
     private EditText et_blood_glucoe_date;
     private EditText et_blood_glucoe_insuline_name;
@@ -64,7 +65,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     private Dialog Blood_Glucose_Dialog;
 
     //blood Pressure register
-    private TextView tv_BloodPressure_register;
+    private CardView cv_BloodPressure_register;
     private Dialog Blood_Pressure_Dialog;
     private EditText et_blood_pressure_sys;
     private EditText et_blood_pressure_dias;
@@ -121,17 +122,17 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         presenter_obj = new presenter.Home_page_presenter(this);
 
         //Medication Schedule
-        MainView_CardView_MedicationSchedule_Title = root_view.findViewById(R.id.MainView_MedicationSchedule_Title);
-        layout_MedicationSchdule_item_title = root_view.findViewById(R.id.layout_MedicationSchdule_item);
-        MainView_CardView_MedicationSchedule_ListView = root_view.findViewById(R.id.MainView_MedicationSchedule_ListView);
+        MainView_CardView_MedicationSchedule_Title = root_view.findViewById(R.id.HomePageLayout_MedicationSchedule_Title);
+        layout_MedicationSchdule_item_title = root_view.findViewById(R.id.HomePageLayout_layout_MedicationSchdule_item);
+        MainView_CardView_MedicationSchedule_ListView = root_view.findViewById(R.id.HomePageLayout_MedicationSchedule_ListView);
 
         //blood glucose register
-        tv_BloodGlucose_register = root_view.findViewById(R.id.MainView_BloodGlucose_Title);
-        tv_BloodGlucose_register.setOnClickListener(this);
+        cv_BloodGlucose_register = root_view.findViewById(R.id.HomePageLayout_CardView_BloodGlucose);
+        cv_BloodGlucose_register.setOnClickListener(this);
 
         //blood pressure register
-        tv_BloodPressure_register = root_view.findViewById(R.id.MainView_BloodPressure_Title);
-        tv_BloodPressure_register.setOnClickListener(this);
+        cv_BloodPressure_register = root_view.findViewById(R.id.HomePageLayout_CardView_BloodPressure);
+        cv_BloodPressure_register.setOnClickListener(this);
 
         //step counter
         smanager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
@@ -369,7 +370,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     @Override
     public void onClick(View v)
     {
-        if(v.equals(tv_BloodGlucose_register))
+        if(v.equals(cv_BloodGlucose_register))
         {
             show_dialog_blood_glucose();
         }
@@ -401,7 +402,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                 Blood_Glucose_Dialog.dismiss();
             }
         }
-        else if(v.equals(tv_BloodPressure_register))
+        else if(v.equals(cv_BloodPressure_register))
         {
             show_dialog_blood_pressure();
         }

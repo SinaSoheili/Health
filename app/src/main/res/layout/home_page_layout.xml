@@ -15,11 +15,11 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/MainView_CardView_Radius"
-            android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
-            android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
-            android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-            android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
+            app:cardCornerRadius="@dimen/HomePageLayout_CardView_Radius"
+            android:layout_marginRight  ="@dimen/HomePageLayout_CardView_MarginRight"
+            android:layout_marginLeft   ="@dimen/HomePageLayout_CardView_MarginLeft"
+            android:layout_marginTop    ="@dimen/HomePageLayout_CardView_MarginTop"
+            android:layout_marginBottom ="@dimen/HomePageLayout_CardView_MarginBottom">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,45 +52,62 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/MainView_CardView_Radius"
-            android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
-            android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
-            android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-            android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
+            app:cardCornerRadius="@dimen/HomePageLayout_CardView_Radius"
+            android:layout_marginRight  ="@dimen/HomePageLayout_CardView_MarginRight"
+            android:layout_marginLeft   ="@dimen/HomePageLayout_CardView_MarginLeft"
+            android:layout_marginTop    ="@dimen/HomePageLayout_CardView_MarginTop"
+            android:layout_marginBottom ="@dimen/HomePageLayout_CardView_MarginBottom">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/MainView_MedicationSchedule_Title"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_alignParentRight="true"
-                    android:textColor="@color/MainView_CardView_Title"
-                    android:text="@string/MainView_CardView_Medication_Title"
-                    android:textSize="@dimen/MainView_CardView_Title_TextSize"
-                    />
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    android:id="@+id/HomePageLayout_medicaion_schedule_container">
+
+                    <TextView
+                        android:id="@+id/HomePageLayout_MedicationSchedule_Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/Home_Page_Layout_CardView_Title"
+                        android:text="@string/MainView_CardView_Medication_Title"
+                        android:textSize="@dimen/HomePageLayout_CardView_Title_TextSize"
+                        />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/medication_schedule"
+                        android:scaleType="fitXY"
+                        />
+
+                </LinearLayout>
 
                 <include
-                    android:id="@+id/layout_MedicationSchdule_item"
+                    android:id="@+id/HomePageLayout_layout_MedicationSchdule_item"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     layout="@layout/medication_schedule_list_item"
-                    android:layout_below="@id/MainView_MedicationSchedule_Title"
+                    android:layout_below="@id/HomePageLayout_medicaion_schedule_container"
                     android:visibility="gone"
                     />
 
                 <ListView
-                    android:id="@+id/MainView_MedicationSchedule_ListView"
+                    android:id="@+id/HomePageLayout_MedicationSchedule_ListView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_below="@id/layout_MedicationSchdule_item"
+                    android:layout_below="@id/HomePageLayout_layout_MedicationSchdule_item"
                     android:visibility="gone"
                     />
 
@@ -99,58 +116,80 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/HomePageLayout_CardView_BloodGlucose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/MainView_CardView_Radius"
-            android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
-            android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
-            android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-            android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
+            app:cardCornerRadius="@dimen/HomePageLayout_CardView_Radius"
+            android:layout_marginRight  ="@dimen/HomePageLayout_CardView_MarginRight"
+            android:layout_marginLeft   ="@dimen/HomePageLayout_CardView_MarginLeft"
+            android:layout_marginTop    ="@dimen/HomePageLayout_CardView_MarginTop"
+            android:layout_marginBottom ="@dimen/HomePageLayout_CardView_MarginBottom">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/MainView_BloodGlucose_Title"
+                    android:id="@+id/HomePageLayout_BloodGlucose_Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/MainView_CardView_Title"
+                    android:textColor="@color/Home_Page_Layout_CardView_Title"
                     android:text="@string/MainView_CardView_BloodGlucose_Title"
-                    android:textSize="@dimen/MainView_CardView_Title_TextSize"
+                    android:textSize="@dimen/HomePageLayout_CardView_Title_TextSize"
                     />
 
-            </RelativeLayout>
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/blood_glucose"
+                    android:scaleType="fitXY"
+                    />
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/HomePageLayout_CardView_BloodPressure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/MainView_CardView_Radius"
-            android:layout_marginRight  ="@dimen/MainView_CardView_MarginRight"
-            android:layout_marginLeft   ="@dimen/MainView_CardView_MarginLeft"
-            android:layout_marginTop    ="@dimen/MainView_CardView_MarginTop"
-            android:layout_marginBottom ="@dimen/MainView_CardView_MarginBottom">
+            app:cardCornerRadius="@dimen/HomePageLayout_CardView_Radius"
+            android:layout_marginRight  ="@dimen/HomePageLayout_CardView_MarginRight"
+            android:layout_marginLeft   ="@dimen/HomePageLayout_CardView_MarginLeft"
+            android:layout_marginTop    ="@dimen/HomePageLayout_CardView_MarginTop"
+            android:layout_marginBottom ="@dimen/HomePageLayout_CardView_MarginBottom">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="right">
 
                 <TextView
-                    android:id="@+id/MainView_BloodPressure_Title"
+                    android:id="@+id/HomePageLayout_BloodPressure_Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/MainView_CardView_Title"
+                    android:textColor="@color/Home_Page_Layout_CardView_Title"
                     android:text="@string/MainView_CardView_BloodPressure_Title"
-                    android:textSize="@dimen/MainView_CardView_Title_TextSize"
+                    android:textSize="@dimen/HomePageLayout_CardView_Title_TextSize"
                     />
 
-            </RelativeLayout>
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/blood_pressure"
+                    android:scaleType="fitXY"
+                    />
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
