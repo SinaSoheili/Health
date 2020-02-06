@@ -21,4 +21,7 @@
     <color name="Button_Submit_Background_Submit_Solid">#CFE7FF</color>
     <color name="Button_Submit_Background_Submit_Stroke">#CFE7FF</color>
 
+    <color name="UnderLine_Illness_List">#009688</color>
+    <color name="UnderLine_Medicine_List">#009688</color>
+
 </resources>
