@@ -6,6 +6,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ListView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -121,6 +123,9 @@ public class Blood_Pressure_History extends AppCompatActivity implements Dashboa
 
             Blood_Pressure_History_List_Adapter adapter = new Blood_Pressure_History_List_Adapter(this , all_item);
             listview.setAdapter(adapter);
+
+            LayoutAnimationController anim = AnimationUtils.loadLayoutAnimation(this , R.anim.animation_layout_list_item);
+            listview.setLayoutAnimation(anim);
         }
     }
 

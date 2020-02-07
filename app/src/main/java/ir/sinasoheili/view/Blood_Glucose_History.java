@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -119,6 +120,9 @@ public class Blood_Glucose_History extends AppCompatActivity implements Dashboar
 
             Blood_Glucose_History_List_Adapter adapter = new Blood_Glucose_History_List_Adapter(this , all_item);
             listview.setAdapter(adapter);
+
+            LayoutAnimationController anim = AnimationUtils.loadLayoutAnimation(this , R.anim.animation_layout_list_item);
+            listview.setLayoutAnimation(anim);
         }
     }
 
