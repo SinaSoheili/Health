@@ -113,6 +113,9 @@ public class Blood_Pressure_History extends AppCompatActivity implements Dashboa
             dataset_systolic.setDrawFilled(true);
 
             line_chart.setData(new LineData(dataset_systolic , dataset_diastolic));
+
+            line_chart.setAlpha(0.1f);
+            line_chart.animate().alpha(1).setDuration(1500).start();
         }
         else if(position == 1)
         {

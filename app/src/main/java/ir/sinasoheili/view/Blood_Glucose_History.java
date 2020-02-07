@@ -110,6 +110,9 @@ public class Blood_Glucose_History extends AppCompatActivity implements Dashboar
             dataset.setDrawFilled(true);
             LineData lineData = new LineData(dataset);
             line_chart.setData(lineData);
+
+            line_chart.setAlpha(0.1f);
+            line_chart.animate().alpha(1).setDuration(1500).start();
         }
         else if(position == 1)
         {
