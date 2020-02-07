@@ -1,5 +1,7 @@
 package ir.sinasoheili.view;
 
+import android.animation.LayoutTransition;
+import android.animation.ValueAnimator;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,15 +12,20 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +34,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import java.security.AlgorithmConstraints;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -48,10 +56,13 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     private View root_view;
 
     //medication schdule
+    private ImageView medication_schedule_arrow;
     private TextView MainView_CardView_MedicationSchedule_Title;
-    private ListView MainView_CardView_MedicationSchedule_ListView;
+    private LinearLayout MainView_CardView_MedicationSchedule_item_continer;
     private View layout_MedicationSchdule_item_title ;
     private String s_today = "";
+    private Day today = null;
+    private View view_of_list_item;
 
     //blood glucose register
     private CardView cv_BloodGlucose_register;
@@ -124,7 +135,8 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         //Medication Schedule
         MainView_CardView_MedicationSchedule_Title = root_view.findViewById(R.id.HomePageLayout_MedicationSchedule_Title);
         layout_MedicationSchdule_item_title = root_view.findViewById(R.id.HomePageLayout_layout_MedicationSchdule_item);
-        MainView_CardView_MedicationSchedule_ListView = root_view.findViewById(R.id.HomePageLayout_MedicationSchedule_ListView);
+        MainView_CardView_MedicationSchedule_item_continer = root_view.findViewById(R.id.HomePageLayout_MedicationSchedule_item_continer);
+        medication_schedule_arrow = root_view.findViewById(R.id.HomePageLayout_MedicationSchedule_arrow);
 
         //blood glucose register
         cv_BloodGlucose_register = root_view.findViewById(R.id.HomePageLayout_CardView_BloodGlucose);
@@ -156,7 +168,6 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     public void show_today_medication_schedule()
     {
         Date d = Calendar.getInstance().getTime();
-        Day today = null;
         switch (d.getDay())
         {
             case 0 :
@@ -193,17 +204,44 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
         //set day to card view
         MainView_CardView_MedicationSchedule_Title.append("  "+s_today);
 
-        ArrayList<MedicationSchedule> items = presenter_obj.get_Medication_schedule(today);
-        if(items.size() > 0)
+        medication_schedule_arrow.setOnClickListener(new View.OnClickListener()
         {
-            //set visibility
-            layout_MedicationSchdule_item_title.setVisibility(View.VISIBLE);
-            MainView_CardView_MedicationSchedule_ListView.setVisibility(View.VISIBLE);
+            @Override
+            public void onClick(View v)
+            {
+                ArrayList<MedicationSchedule> items = presenter_obj.get_Medication_schedule(today);
 
-            //set list item
-            MedicationSchedule_List_Adapter adapter = new MedicationSchedule_List_Adapter(root_view.getContext() , items);
-            MainView_CardView_MedicationSchedule_ListView.setAdapter(adapter);
-        }
+                if(medication_schedule_arrow.getTag().toString().equals("up"))
+                {
+                    medication_schedule_arrow.setTag("down");
+                    medication_schedule_arrow.animate().rotation(180).setDuration(250).start();
+
+                    if(items.size() > 0)
+                    {
+                        //set visibility title
+                        layout_MedicationSchdule_item_title.setVisibility(View.VISIBLE);
+
+                        //show item's
+                        MedicationSchedule_List_Adapter adapter = new MedicationSchedule_List_Adapter(getContext() , items);
+                        for(int i=0 ; i<adapter.getCount() ; i++)
+                        {
+                            view_of_list_item = adapter.getView(i , null , null);
+                            MainView_CardView_MedicationSchedule_item_continer.addView(view_of_list_item);
+                        }
+                    }
+                }
+                else
+                {
+                    medication_schedule_arrow.setTag("up");
+
+                    medication_schedule_arrow.animate().rotation(360).setDuration(250).start();
+
+                    //set visibility
+                    MainView_CardView_MedicationSchedule_item_continer.removeAllViews();
+                    layout_MedicationSchdule_item_title.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     //dialog register blood glucose
