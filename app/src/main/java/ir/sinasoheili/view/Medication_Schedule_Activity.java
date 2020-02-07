@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -109,6 +111,9 @@ public class Medication_Schedule_Activity extends AppCompatActivity implements D
         }
         MedicationSchedule_All_List_Adapter adapter = new MedicationSchedule_All_List_Adapter(this , items);
         listView.setAdapter(adapter);
+
+        LayoutAnimationController anim = AnimationUtils.loadLayoutAnimation(this , R.anim.animation_layout_list_item);
+        listView.setLayoutAnimation(anim);
     }
 
     private void show_add_dialog()

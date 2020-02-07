@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -109,6 +110,9 @@ public class Blood_Glucose_History extends AppCompatActivity implements Dashboar
             dataset.setDrawFilled(true);
             LineData lineData = new LineData(dataset);
             line_chart.setData(lineData);
+
+            line_chart.setAlpha(0.1f);
+            line_chart.animate().alpha(1).setDuration(1500).start();
         }
         else if(position == 1)
         {
@@ -119,6 +123,9 @@ public class Blood_Glucose_History extends AppCompatActivity implements Dashboar
 
             Blood_Glucose_History_List_Adapter adapter = new Blood_Glucose_History_List_Adapter(this , all_item);
             listview.setAdapter(adapter);
+
+            LayoutAnimationController anim = AnimationUtils.loadLayoutAnimation(this , R.anim.animation_layout_list_item);
+            listview.setLayoutAnimation(anim);
         }
     }
 
