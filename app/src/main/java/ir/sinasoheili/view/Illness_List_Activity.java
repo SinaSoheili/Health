@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -59,6 +61,8 @@ public class Illness_List_Activity extends AppCompatActivity implements Dashboar
         ArrayAdapter<Illness> adapter = new ArrayAdapter<Illness>(this , android.R.layout.simple_list_item_1 , all_item);
         lv.setAdapter(adapter);
 
+        LayoutAnimationController anim = AnimationUtils.loadLayoutAnimation(this , R.anim.animation_layout_list_item);
+        lv.setLayoutAnimation(anim);
     }
 
     @Override

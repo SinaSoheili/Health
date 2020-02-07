@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -57,6 +59,9 @@ public class Medicine_List_Activity extends AppCompatActivity implements Dashboa
         }
         ArrayAdapter<Medicine> adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1 , all_item);
         listview.setAdapter(adapter);
+
+        LayoutAnimationController anim_controller = AnimationUtils.loadLayoutAnimation(this , R.anim.animation_layout_list_item);
+        listview.setLayoutAnimation(anim_controller);
 
         listview.setOnItemClickListener(this);
     }
