@@ -42,4 +42,12 @@
     <dimen name="Dashboard_CardView_Margin">6dp</dimen>
     <dimen name="Dashboard_CardView_redius">10dp</dimen>
 
+    <dimen name="Profile_CardView_radius">10dp</dimen>
+    <dimen name="Profile_CardView_MarginRight">15dp</dimen>
+    <dimen name="Profile_CardView_MarginLeft">15dp</dimen>
+    <dimen name="Profile_CardView_MarginTop">8dp</dimen>
+    <dimen name="Profile_CardView_MarginBottom">8dp</dimen>
+    <dimen name="Profile_tv_title">20sp</dimen>
+    <dimen name="Profile_tv_content">18sp</dimen>
+
 </resources>
