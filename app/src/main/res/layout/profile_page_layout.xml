@@ -1,16 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.motion.widget.MotionLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/motion_description">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="page 3"
-        android:textSize="30sp"
-        android:layout_gravity="center"
+    <View
+        android:id="@+id/profile_view_background"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#009688"
         />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/profile_imageview_avatar"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/person"
+        android:scaleType="fitXY"
+        android:padding="28dp"
+        android:background="@drawable/avatar_background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/profile_view_background"
+        android:layout_marginTop="150dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/profile_LinearLayout_continer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_imageview_avatar"
+        app:layout_constraintVertical_bias="0">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Profile_CardView_personalInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/Profile_CardView_radius"
+            android:layout_marginRight  ="@dimen/Profile_CardView_MarginRight"
+            android:layout_marginLeft   ="@dimen/Profile_CardView_MarginLeft"
+            android:layout_marginTop    ="@dimen/Profile_CardView_MarginTop"
+            android:layout_marginBottom ="@dimen/Profile_CardView_MarginBottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:id="@+id/profile_tv_TitlePersonalInformation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textStyle="bold"
+                        android:text="مشخصات فردی"
+                        android:textSize="@dimen/Profile_tv_title"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="10dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/person"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/profile_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="نام : "
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_tv_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="سن : "
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_tv_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="قد : "
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginRight="8dp"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Profile_CardView_Setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/Profile_CardView_radius"
+            android:layout_marginRight  ="@dimen/Profile_CardView_MarginRight"
+            android:layout_marginLeft   ="@dimen/Profile_CardView_MarginLeft"
+            android:layout_marginTop    ="@dimen/Profile_CardView_MarginTop"
+            android:layout_marginBottom ="@dimen/Profile_CardView_MarginBottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:id="@+id/profile_tv_TitleSetting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textStyle="bold"
+                        android:text="تنظیمات"
+                        android:textSize="@dimen/Profile_tv_title"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="10dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/setting"
+                        />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="comming soon"
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
