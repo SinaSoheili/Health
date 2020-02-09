@@ -29,5 +29,10 @@ public interface Home_page_contract
         public boolean register_BloodGlucose(BloodGlucose bg);
 
         public boolean register_BloodPressure(BloodPressure bp);
+
+        public int water_getcurrent();
+        public int water_increment();
+        public int water_restart();
+        public int water_decrement();
     }
 }

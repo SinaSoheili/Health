@@ -22,6 +22,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,6 +88,14 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     private SensorManager smanager;
     private Sensor sensor;
     private TextView tv_stepCounter_support;
+
+    //water counter
+    private LinearLayout water_continer;
+    private ImageView water_iv_increment ;
+    private ImageView water_iv_reset ;
+    private ImageView water_iv_decrement ;
+    private ImageView water_iv_arrow ;
+    private TextView  water_tv_amount;
 
     @Nullable
     @Override
@@ -157,6 +166,18 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                 return ((int)currentProgress+"\nStep");
             }
         });
+
+        //water counter
+        water_continer      = root_view.findViewById(R.id.HomePageLayout_Water_continer);
+        water_iv_increment  = root_view.findViewById(R.id.HomePageLayout_iv_increment);
+        water_iv_reset      = root_view.findViewById(R.id.HomePageLayout_iv_reset);
+        water_iv_decrement  = root_view.findViewById(R.id.HomePageLayout_iv_decrement);
+        water_tv_amount     = root_view.findViewById(R.id.HomePageLayout_Water_tv_amount);
+        water_iv_arrow      = root_view.findViewById(R.id.HomePageLayout_Water_arrow);
+        water_iv_arrow.setOnClickListener(this);
+        water_iv_increment.setOnClickListener(this);
+        water_iv_reset.setOnClickListener(this);
+        water_iv_decrement.setOnClickListener(this);
     }
 
     //contract function's
@@ -548,6 +569,74 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
 
                 Blood_Pressure_Dialog.dismiss();
             }
+        }
+        else if(v.equals(water_iv_arrow))
+        {
+            //set value
+            int amount = presenter_obj.water_getcurrent();
+            water_tv_amount.setText(String.valueOf(amount));
+
+            //animate
+            int max_height = 210;  //TODO : get real height need to show
+
+            if(water_iv_arrow.getTag().toString().equals("up"))
+            {
+                //animate arrow
+                water_iv_arrow.setTag("down");
+                water_iv_arrow.animate().rotation(180).setDuration(250).start();
+
+                //animate continer
+                water_continer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , 0));
+                ValueAnimator va = ValueAnimator.ofInt(0 , max_height);
+                va.setStartDelay(80);
+                va.setDuration(900);
+                va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+                {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation)
+                    {
+                        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , (int)animation.getAnimatedValue());
+                        water_continer.setLayoutParams(param);
+                    }
+                });
+                va.start();
+            }
+            else if(water_iv_arrow.getTag().toString().equals("down"))
+            {
+                //animate arrow
+                water_iv_arrow.setTag("up");
+                water_iv_arrow.animate().rotation(360).setDuration(250).start();
+
+                //animate continer
+                ValueAnimator va = ValueAnimator.ofInt(max_height , 0);
+                va.setStartDelay(80);
+                va.setDuration(900);
+                va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+                {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation)
+                    {
+                        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , (int)animation.getAnimatedValue());
+                        water_continer.setLayoutParams(param);
+                    }
+                });
+                va.start();
+            }
+        }
+        else if(v.equals(water_iv_increment))
+        {
+            int amount = presenter_obj.water_increment();
+            water_tv_amount.setText(String.valueOf(amount));
+        }
+        else if(v.equals(water_iv_reset))
+        {
+            int amount = presenter_obj.water_restart();
+            water_tv_amount.setText(String.valueOf(amount));
+        }
+        else if(v.equals(water_iv_decrement))
+        {
+            int amount = presenter_obj.water_decrement();
+            water_tv_amount.setText(String.valueOf(amount));
         }
     }
 

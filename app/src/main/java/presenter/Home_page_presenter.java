@@ -1,6 +1,7 @@
 package presenter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import androidx.fragment.app.Fragment;
 
@@ -16,6 +17,9 @@ import model.MedicationSchedule;
 
 public class Home_page_presenter implements Home_page_contract.Home_page_presenter
 {
+    private final String WATER_PREF_FILE = "WATER_PREF_FILE";
+    private final String WATER_PREF_KEY = "COUNT";
+
     private Home_page_contract.Main_page_view view_obj;
     private Context context;
 
@@ -73,5 +77,41 @@ public class Home_page_presenter implements Home_page_contract.Home_page_present
         {
             return false;
         }
+    }
+
+    @Override
+    public int water_getcurrent()
+    {
+        SharedPreferences pref = context.getSharedPreferences(WATER_PREF_FILE , Context.MODE_PRIVATE);
+        int current = pref.getInt(WATER_PREF_KEY , 0);
+        return current;
+    }
+
+    @Override
+    public int water_increment()
+    {
+        SharedPreferences pref = context.getSharedPreferences(WATER_PREF_FILE , Context.MODE_PRIVATE);
+        int current = pref.getInt(WATER_PREF_KEY , 0);
+        current++;
+        pref.edit().putInt(WATER_PREF_KEY , current).commit();
+        return current;
+    }
+
+    @Override
+    public int water_restart()
+    {
+        SharedPreferences pref = context.getSharedPreferences(WATER_PREF_FILE , Context.MODE_PRIVATE);
+        pref.edit().putInt(WATER_PREF_KEY , 0).commit();
+        return 0;
+    }
+
+    @Override
+    public int water_decrement()
+    {
+        SharedPreferences pref = context.getSharedPreferences(WATER_PREF_FILE , Context.MODE_PRIVATE);
+        int current = pref.getInt(WATER_PREF_KEY , 0);
+        current = current == 0 ? 0 : --current;
+        pref.edit().putInt(WATER_PREF_KEY , current).commit();
+        return current;
     }
 }

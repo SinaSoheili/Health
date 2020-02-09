@@ -167,6 +167,129 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/HomePageLayout_CardView_Radius"
+            android:layout_marginRight  ="@dimen/HomePageLayout_CardView_MarginRight"
+            android:layout_marginLeft   ="@dimen/HomePageLayout_CardView_MarginLeft"
+            android:layout_marginTop    ="@dimen/HomePageLayout_CardView_MarginTop"
+            android:layout_marginBottom ="@dimen/HomePageLayout_CardView_MarginBottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/HomePageLayout_WaterIcon"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/water"
+                        android:scaleType="fitXY"
+                        android:layout_alignParentRight="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/HomePageLayout_WaterTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/Home_Page_Layout_CardView_Title"
+                        android:text="@string/MainView_CardView_Water_Title"
+                        android:textSize="@dimen/HomePageLayout_CardView_Title_TextSize"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/HomePageLayout_Water_arrow"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/down_arrow"
+                        android:padding="4dp"
+                        android:tag="up"
+                        android:layout_marginTop="8dp"
+                        />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/HomePageLayout_Water_continer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/HomePageLayout_Water_tv_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="@dimen/HomePageLayout_water_amount_TextSize"
+                        android:textColor="@color/Home_Page_Layout_CardView_Title"
+                        android:text="0"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="left"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/water_button_background"
+                        android:padding="1dp"
+                        android:layout_marginRight="10dp">
+
+                        <ImageView
+                            android:id="@+id/HomePageLayout_iv_decrement"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/minus"
+                            android:layout_margin="3dp"
+                            android:padding="8dp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/HomePageLayout_iv_reset"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/restart"
+                            android:layout_margin="3dp"
+                            android:padding="8dp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/HomePageLayout_iv_increment"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/plus"
+                            android:layout_margin="3dp"
+                            android:padding="8dp"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/HomePageLayout_CardView_BloodGlucose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

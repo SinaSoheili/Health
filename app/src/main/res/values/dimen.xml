@@ -8,6 +8,8 @@
     <dimen name="HomePageLayout_CardView_Radius">10dp</dimen>
     <dimen name="HomePageLayout_CardView_Title_TextSize">18sp</dimen>
 
+    <dimen name="HomePageLayout_water_amount_TextSize">20sp</dimen>
+
     <dimen name="MedicationSchedule_ListItem_TextSize">18sp</dimen>
 
     <dimen name="Illness_Activity_Item_TextSize">18sp</dimen>
