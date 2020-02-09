@@ -25,6 +25,7 @@
 
     <color name="UnderLine_Illness_List">#009688</color>
     <color name="UnderLine_Medicine_List">#009688</color>
+    <color name="UnderLine_Calories_List">#009688</color>
 
     <color name="profile_avatar_background">#009688</color>
     <color name="profile_avatar_stroke">#FFFFFF</color>

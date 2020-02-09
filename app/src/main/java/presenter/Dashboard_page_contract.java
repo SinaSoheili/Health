@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.BloodGlucose;
 import model.BloodPressure;
+import model.Calories;
 import model.Illness;
 import model.MedicationSchedule;
 import model.Medicine;
@@ -26,5 +27,7 @@ public interface Dashboard_page_contract
         public boolean delete_medication_Schedule(MedicationSchedule m);
         public ArrayList<BloodGlucose> get_all_blood_glucose();
         public ArrayList<BloodPressure> get_all_blood_pressure();
+        public ArrayList<Calories> get_all_calories();
+        public ArrayList<Calories> search_calories(String name);
     }
 }
