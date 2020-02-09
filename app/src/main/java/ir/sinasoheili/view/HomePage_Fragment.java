@@ -1,6 +1,5 @@
 package ir.sinasoheili.view;
 
-import android.animation.LayoutTransition;
 import android.animation.ValueAnimator;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -13,19 +12,15 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +29,6 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import java.security.AlgorithmConstraints;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,6 +57,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
     private String s_today = "";
     private Day today = null;
     private View view_of_list_item;
+    private ArrayList<MedicationSchedule> items_medications_schedule;
 
     //blood glucose register
     private CardView cv_BloodGlucose_register;
@@ -209,36 +204,115 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
             @Override
             public void onClick(View v)
             {
-                ArrayList<MedicationSchedule> items = presenter_obj.get_Medication_schedule(today);
+                items_medications_schedule = presenter_obj.get_Medication_schedule(today);
+
+                int height_of_each_item = 90;  //TODO : get real height of each item
 
                 if(medication_schedule_arrow.getTag().toString().equals("up"))
                 {
                     medication_schedule_arrow.setTag("down");
                     medication_schedule_arrow.animate().rotation(180).setDuration(250).start();
 
-                    if(items.size() > 0)
+                    if(items_medications_schedule.size() > 0)
                     {
+                        int item_count = items_medications_schedule.size();
+
+                        int title_animate_delay = 60;
+                        int title_animate_duration = 400;
+
+                        int items_animate_delay = title_animate_delay + title_animate_duration + 100;
+                        int items_animate_duration = item_count * 300;
+
+                        int show_items_delay = items_animate_delay + items_animate_duration - 1000;
+
                         //set visibility title
+                        layout_MedicationSchdule_item_title.setAlpha(0);
                         layout_MedicationSchdule_item_title.setVisibility(View.VISIBLE);
+                        layout_MedicationSchdule_item_title.animate().alpha(1).setStartDelay(title_animate_delay).setDuration(title_animate_duration).start();
+
+                        //animated
+                        MainView_CardView_MedicationSchedule_item_continer.setAlpha(1);
+                        ValueAnimator va = ValueAnimator.ofInt(0 , (item_count * height_of_each_item));
+                        va.setDuration(items_animate_duration);
+                        va.setStartDelay(items_animate_delay);
+                        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+                        {
+                            @Override
+                            public void onAnimationUpdate(ValueAnimator animation)
+                            {
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , (int)animation.getAnimatedValue());
+                                MainView_CardView_MedicationSchedule_item_continer.setLayoutParams(params);
+                            }
+                        });
+                        va.start();
 
                         //show item's
-                        MedicationSchedule_List_Adapter adapter = new MedicationSchedule_List_Adapter(getContext() , items);
-                        for(int i=0 ; i<adapter.getCount() ; i++)
+                        new Handler().postDelayed(new Runnable()
                         {
-                            view_of_list_item = adapter.getView(i , null , null);
-                            MainView_CardView_MedicationSchedule_item_continer.addView(view_of_list_item);
-                        }
+                            @Override
+                            public void run()
+                            {
+                                MedicationSchedule_List_Adapter adapter = new MedicationSchedule_List_Adapter(getContext() , items_medications_schedule);
+                                for(int i=0 ; i<adapter.getCount() ; i++)
+                                {
+                                    view_of_list_item = adapter.getView(i , null , null);
+
+                                    view_of_list_item.setAlpha(0);
+                                    view_of_list_item.animate().alpha(1).setStartDelay(i*30).setDuration(900).start();
+
+                                    MainView_CardView_MedicationSchedule_item_continer.addView(view_of_list_item);
+                                }
+                            }
+                        } , show_items_delay);
+
                     }
                 }
                 else
                 {
+                    int continer_delay = 80;
+                    int continer_duration = 500;
+
+                    int title_dalay = continer_delay + continer_duration + 100;
+                    int title_duration = 200;
+
+                    int delay_visibility_title = title_dalay + title_duration + 100;
+
+                    int hide_layout_dalay = continer_delay + continer_duration;
+                    int hide_layout_duration = items_medications_schedule.size()*100;
+
                     medication_schedule_arrow.setTag("up");
 
                     medication_schedule_arrow.animate().rotation(360).setDuration(250).start();
 
-                    //set visibility
-                    MainView_CardView_MedicationSchedule_item_continer.removeAllViews();
-                    layout_MedicationSchdule_item_title.setVisibility(View.GONE);
+                    MainView_CardView_MedicationSchedule_item_continer.setAlpha(1);
+                    MainView_CardView_MedicationSchedule_item_continer.animate().alpha(0).setStartDelay(continer_delay).setDuration(continer_duration).start();
+
+                    layout_MedicationSchdule_item_title.setAlpha(1);
+                    layout_MedicationSchdule_item_title.animate().alpha(0).setStartDelay(title_dalay).setDuration(title_duration).start();
+
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            MainView_CardView_MedicationSchedule_item_continer.removeAllViews();
+                            layout_MedicationSchdule_item_title.setVisibility(View.GONE);
+                        }
+                    } , delay_visibility_title);
+
+                    ValueAnimator va = ValueAnimator.ofInt((height_of_each_item * items_medications_schedule.size()) , 0);
+                    va.setStartDelay(hide_layout_dalay);
+                    va.setDuration(hide_layout_duration);
+                    va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+                    {
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator animation)
+                        {
+                            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , (int)animation.getAnimatedValue());
+                            MainView_CardView_MedicationSchedule_item_continer.setLayoutParams(param);
+                        }
+                    });
+                    va.start();
                 }
             }
         });
