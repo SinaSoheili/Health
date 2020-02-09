@@ -64,11 +64,9 @@
                 android:padding="10dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="right"
                     android:id="@+id/HomePageLayout_medicaion_schedule_container">
 
                     <ImageView
@@ -76,40 +74,40 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/down_arrow"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="4dp"
                         android:padding="4dp"
                         android:tag="up"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignTop="@id/HomePageLayout_medicaion_schedule_container"
+                        android:layout_marginTop="8dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/HomePageLayout_MedicationSchedule_iv"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/medication_schedule"
+                        android:scaleType="fitXY"
+                        android:layout_alignParentRight="true"
                         />
 
                     <TextView
                         android:id="@+id/HomePageLayout_MedicationSchedule_Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_alignParentRight="true"
                         android:textColor="@color/Home_Page_Layout_CardView_Title"
                         android:text="@string/MainView_CardView_Medication_Title"
                         android:textSize="@dimen/HomePageLayout_CardView_Title_TextSize"
+                        android:layout_toLeftOf="@id/HomePageLayout_MedicationSchedule_iv"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="8dp"
                         />
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/medication_schedule"
-                        android:scaleType="fitXY"
-                        />
-
-                </LinearLayout>
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/HomePageLayout_layout_MedicationSchdule_item"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:visibility="gone">
 
                     <TextView
