@@ -190,6 +190,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/DashboardPageLayout_CardView_Calories"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -211,7 +212,7 @@
                         />
 
                     <Button
-                        android:id="@+id/Dashboard_btn_ccalories"
+                        android:id="@+id/Dashboard_btn_calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
