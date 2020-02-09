@@ -105,14 +105,53 @@
 
                 </LinearLayout>
 
-                <include
+                <LinearLayout
                     android:id="@+id/HomePageLayout_layout_MedicationSchdule_item"
-                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    layout="@layout/medication_schedule_list_item"
-                    android:layout_below="@id/HomePageLayout_medicaion_schedule_container"
-                    android:visibility="gone"
-                    />
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/MedicationSchedule_ListItem_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ساعت"
+                        android:textSize="@dimen/MedicationSchedule_ListItem_TextSize"
+                        android:textColor="@color/MedicationSchedule_ListItem_text"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/MedicationSchedule_ListItem_amount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="مقدار"
+                        android:textSize="@dimen/MedicationSchedule_ListItem_TextSize"
+                        android:textColor="@color/MedicationSchedule_ListItem_text"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/MedicationSchedule_ListItem_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="نام دارو"
+                        android:textSize="@dimen/MedicationSchedule_ListItem_TextSize"
+                        android:textColor="@color/MedicationSchedule_ListItem_text"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/HomePageLayout_MedicationSchedule_item_continer"
