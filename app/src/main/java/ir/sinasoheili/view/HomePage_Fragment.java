@@ -12,6 +12,7 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -207,6 +208,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                 items_medications_schedule = presenter_obj.get_Medication_schedule(today);
 
                 int height_of_each_item = 90;  //TODO : get real height of each item
+                int each_time_time_animate = 500;
 
                 if(medication_schedule_arrow.getTag().toString().equals("up"))
                 {
@@ -220,10 +222,10 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                         int title_animate_delay = 60;
                         int title_animate_duration = 400;
 
-                        int items_animate_delay = title_animate_delay + title_animate_duration + 100;
-                        int items_animate_duration = item_count * 300;
+                        int items_animate_delay = title_animate_delay + 100;
+                        int items_animate_duration = each_time_time_animate*item_count;
 
-                        int show_items_delay = items_animate_delay + items_animate_duration - 1000;
+                        int show_items_delay = items_animate_delay + 400;
 
                         //set visibility title
                         layout_MedicationSchdule_item_title.setAlpha(0);
@@ -232,6 +234,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
 
                         //animated
                         MainView_CardView_MedicationSchedule_item_continer.setAlpha(1);
+                        MainView_CardView_MedicationSchedule_item_continer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , 0));
                         ValueAnimator va = ValueAnimator.ofInt(0 , (item_count * height_of_each_item));
                         va.setDuration(items_animate_duration);
                         va.setStartDelay(items_animate_delay);
@@ -269,23 +272,25 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                 }
                 else
                 {
-                    int continer_delay = 80;
-                    int continer_duration = 500;
+                    int count = items_medications_schedule.size();
 
-                    int title_dalay = continer_delay + continer_duration + 100;
-                    int title_duration = 200;
+                    int continer_delay = 80;
+                    int container_duration = count*70;
+
+                    int hide_layout_dalay = container_duration - 30;
+                    int hide_layout_duration = (each_time_time_animate/2)*count;
+
+                    int title_dalay = container_duration/5;
+                    int title_duration = (hide_layout_duration/4)*3;
 
                     int delay_visibility_title = title_dalay + title_duration + 100;
-
-                    int hide_layout_dalay = continer_delay + continer_duration;
-                    int hide_layout_duration = items_medications_schedule.size()*100;
 
                     medication_schedule_arrow.setTag("up");
 
                     medication_schedule_arrow.animate().rotation(360).setDuration(250).start();
 
                     MainView_CardView_MedicationSchedule_item_continer.setAlpha(1);
-                    MainView_CardView_MedicationSchedule_item_continer.animate().alpha(0).setStartDelay(continer_delay).setDuration(continer_duration).start();
+                    MainView_CardView_MedicationSchedule_item_continer.animate().alpha(0).setStartDelay(continer_delay).setDuration(container_duration).start();
 
                     layout_MedicationSchdule_item_title.setAlpha(1);
                     layout_MedicationSchdule_item_title.animate().alpha(0).setStartDelay(title_dalay).setDuration(title_duration).start();
