@@ -30,4 +30,6 @@
     <color name="profile_avatar_background">#009688</color>
     <color name="profile_avatar_stroke">#FFFFFF</color>
 
+    <color name="Calories_List_Item_textcolor">#292929</color>
+
 </resources>

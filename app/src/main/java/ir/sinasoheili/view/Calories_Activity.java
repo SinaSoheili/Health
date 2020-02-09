@@ -46,7 +46,7 @@ public class Calories_Activity extends AppCompatActivity implements Dashboard_pa
 
     private void show_list_view()
     {
-        ArrayAdapter adapter = new ArrayAdapter(this , android.R.layout.simple_list_item_1 , items);
+        Calories_Adapter adapter = new Calories_Adapter(this , items);
         listview.setAdapter(adapter);
     }
 
