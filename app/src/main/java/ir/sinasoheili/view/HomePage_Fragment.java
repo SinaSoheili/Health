@@ -207,7 +207,7 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
             {
                 items_medications_schedule = presenter_obj.get_Medication_schedule(today);
 
-                int height_of_each_item = 90;  //TODO : get real height of each item
+                int height_of_each_item = 100;  //TODO : get real height of each item
                 int each_time_time_animate = 500;
 
                 if(medication_schedule_arrow.getTag().toString().equals("up"))
