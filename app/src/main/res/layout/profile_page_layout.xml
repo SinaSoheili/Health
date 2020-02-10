@@ -14,7 +14,7 @@
         android:background="#009688"
         />
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/profile_imageview_avatar"
         android:layout_width="250dp"
         android:layout_height="250dp"
@@ -69,13 +69,15 @@
                         android:text="مشخصات فردی"
                         android:textSize="@dimen/Profile_tv_title"
                         android:layout_marginTop="4dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="5dp"
                         />
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/person"
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="50dp"
+                        android:layout_height="45dp"
+                        app:lottie_rawRes="@raw/person_animation_json"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
                         />
 
                 </LinearLayout>
@@ -144,18 +146,21 @@
                         android:id="@+id/profile_tv_TitleSetting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
+                        android:layout_gravity="center_vertical"
                         android:textStyle="bold"
                         android:text="تنظیمات"
                         android:textSize="@dimen/Profile_tv_title"
                         android:layout_marginTop="4dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="5dp"
                         />
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/setting"
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="50dp"
+                        android:layout_height="45dp"
+                        app:lottie_rawRes="@raw/gear_animation_json"
+                        android:scaleType="fitXY"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
                         />
 
                 </LinearLayout>
