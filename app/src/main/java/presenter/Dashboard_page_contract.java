@@ -29,5 +29,6 @@ public interface Dashboard_page_contract
         public ArrayList<BloodPressure> get_all_blood_pressure();
         public ArrayList<Calories> get_all_calories();
         public ArrayList<Calories> search_calories(String name);
+        public Calories search_calories(int id);
     }
 }

@@ -156,4 +156,12 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
         return all_item;
     }
 
+    @Override
+    public Calories search_calories(int id)
+    {
+        DB_Calories db = new DB_Calories(context);
+        Calories item = db.search(id);
+        return item;
+    }
+
 }

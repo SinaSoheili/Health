@@ -31,5 +31,7 @@
     <color name="profile_avatar_stroke">#FFFFFF</color>
 
     <color name="Calories_List_Item_textcolor">#292929</color>
+    <color name="Calories_DialogArchive_SumCalory_textcolor">#292929</color>
+    <color name="Calories_DialogArchive_Underline">#009688</color>
 
 </resources>

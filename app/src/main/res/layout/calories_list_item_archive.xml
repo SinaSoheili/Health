@@ -7,7 +7,7 @@
     android:padding="@dimen/Calories_List_Item_padding">
 
     <TextView
-        android:id="@+id/Calories_List_item_name"
+        android:id="@+id/Calories_Archive_List_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
@@ -25,17 +25,17 @@
         android:layout_marginRight="10dp">
 
         <ImageView
-            android:id="@+id/Calories_List_item_iv_add_to_archive"
+            android:id="@+id/Calories_Archive_List_item_iv_remove_from_archive"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_weight="0.1"
-            android:src="@drawable/tick"
-            android:onClick="add_to_archive"
+            android:src="@drawable/remove"
+            android:onClick="remove_from_archive"
             android:padding="2dp"
             />
 
         <TextView
-            android:id="@+id/Calories_List_item_calories"
+            android:id="@+id/Calories_Archive_List_item_calories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -46,7 +46,7 @@
             />
 
         <TextView
-            android:id="@+id/Calories_List_item_amount"
+            android:id="@+id/Calories_Archive_List_item_amount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
