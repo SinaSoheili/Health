@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Blood_Pressure_History"></activity>
+        <activity android:name=".Calories_Activity"></activity>
+        <activity android:name=".Blood_Pressure_History" />
         <activity android:name=".Blood_Glucose_History" />
         <activity android:name=".Medication_Schedule_Activity" />
         <activity android:name=".Medicine_Activity_Item" />

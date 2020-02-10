@@ -2,21 +2,16 @@
     <string name="app_name">Health</string>
 
     <string name="MainView_CardView_Medication_Title">برنامه دارویی روز : </string>
-
     <string name="MainView_CardView_BloodGlucose_Title">قند خون</string>
-
     <string name="MainView_CardView_BloodPressure_Title">فشار خون</string>
-
     <string name="MainView_CardView_Water_Title">آب</string>
 
     <string name="Dashboard_btn_medicine">دارو ها</string>
-
     <string name="Dashboard_btn_illness">بیماری ها</string>
-
     <string name="Dashboard_btn_bloodGlucose">تاریخچه قند خون</string>
-
     <string name="Dashboard_btn_bloodPressure">تاریخچه فشار خون</string>
-
     <string name="Dashboard_btn_medication_schedule">برنامه دارویی</string>
+    <string name="Dashboard_btn_calories">کالری</string>
+
 
 </resources>

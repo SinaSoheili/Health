@@ -7,8 +7,10 @@ import java.util.ArrayList;
 
 import model.BloodGlucose;
 import model.BloodPressure;
+import model.Calories;
 import model.DB_BloodGlucose;
 import model.DB_BloodPressure;
+import model.DB_Calories;
 import model.DB_Illness;
 import model.DB_MedicationSchedule;
 import model.DB_Medicine;
@@ -136,6 +138,30 @@ public class Dashboard_Page_presenter implements Dashboard_page_contract.Dashboa
         DB_BloodPressure db = new DB_BloodPressure(context);
         ArrayList<BloodPressure> all_item = db.get_all();
         return all_item;
+    }
+
+    @Override
+    public ArrayList<Calories> get_all_calories()
+    {
+        DB_Calories db = new DB_Calories(context);
+        ArrayList<Calories> all_item = db.get_all();
+        return all_item;
+    }
+
+    @Override
+    public ArrayList<Calories> search_calories(String name)
+    {
+        DB_Calories db = new DB_Calories(context);
+        ArrayList<Calories> all_item = db.search(name);
+        return all_item;
+    }
+
+    @Override
+    public Calories search_calories(int id)
+    {
+        DB_Calories db = new DB_Calories(context);
+        Calories item = db.search(id);
+        return item;
     }
 
 }
