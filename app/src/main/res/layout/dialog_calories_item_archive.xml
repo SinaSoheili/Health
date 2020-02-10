@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/Calories_DialogArchive_tv_sum"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/Calories_DialogArchive_tv_sum_margin"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textColor="@color/Calories_DialogArchive_SumCalory_textcolor"
+        android:textSize="@dimen/Calories_DialogArchive_tv_sum_TextSize"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Calories_DialogArchive_Underline"
+        />
+
+    <ListView
+        android:id="@+id/Calories_DialogArchive_lv_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight  ="@dimen/Calories_DialogArchive_lv_items_marginRight"
+        android:layout_marginLeft   ="@dimen/Calories_DialogArchive_lv_items_marginLeft"
+        android:layout_marginTop    ="@dimen/Calories_DialogArchive_lv_items_marginTop"
+        android:layout_marginBottom ="@dimen/Calories_DialogArchive_lv_items_marginBottom"
+        />
+
+</LinearLayout>

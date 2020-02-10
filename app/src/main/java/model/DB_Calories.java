@@ -114,4 +114,21 @@ public class DB_Calories extends SQLiteOpenHelper
 
         return items;
     }
+
+    public Calories search(int id)
+    {
+        SQLiteDatabase db = getReadableDatabase();
+        String cmd = "SELECT DISTINCT * FROM '"+TABLE_NAME+"' WHERE "+ID_COLUMN+" = "+id+";";
+        Cursor cursor = db.rawQuery(cmd , null);
+        cursor.moveToFirst();
+
+        int cid         = cursor.getInt(cursor.getColumnIndex(ID_COLUMN));
+        String name     = cursor.getString(cursor.getColumnIndex(NAME_COLUMN));
+        String amount   = cursor.getString(cursor.getColumnIndex(AMOUNT_COLUMN));
+        String calories = cursor.getString(cursor.getColumnIndex(CALORIES_COLUMN));
+
+        Calories item = new Calories(cid , name , amount , calories);
+
+        return item;
+    }
 }

@@ -190,6 +190,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/DashboardPageLayout_CardView_Calories"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -199,7 +200,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/Dashboard_ImageView_Width"
+                        android:layout_height="@dimen/Dashboard_ImageView_Height"
+                        android:src="@drawable/calories"
+                        android:scaleType="fitXY"
+                        android:padding="@dimen/Dashboard_ImageView_Padding"
+                        />
+
+                    <Button
+                        android:id="@+id/Dashboard_btn_calories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:textColor="@color/Home_Page_Layout_CardView_Title"
+                        android:text="@string/Dashboard_btn_calories"
+                        android:textSize="@dimen/HomePageLayout_CardView_Title_TextSize"
+                        android:clickable="false"
+                        />
 
                 </LinearLayout>
 

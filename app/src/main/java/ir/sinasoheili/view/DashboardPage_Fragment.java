@@ -25,6 +25,7 @@ public class DashboardPage_Fragment extends Fragment implements View.OnClickList
     private CardView cv_medication_schedule;
     private CardView cv_blood_glucose_history;
     private CardView cv_blood_Pressure_history;
+    private CardView cv_calories;
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -55,6 +56,10 @@ public class DashboardPage_Fragment extends Fragment implements View.OnClickList
         //btn blood pressure history
         cv_blood_Pressure_history = root_view.findViewById(R.id.DashboardPageLayout_CardView_BloodPressure);
         cv_blood_Pressure_history.setOnClickListener(this);
+
+        //btn calories
+        cv_calories = root_view.findViewById(R.id.DashboardPageLayout_CardView_Calories);
+        cv_calories.setOnClickListener(this);
     }
 
     //on click
@@ -99,6 +104,11 @@ public class DashboardPage_Fragment extends Fragment implements View.OnClickList
         else if(v.equals(cv_blood_Pressure_history))
         {
             Intent intent = new Intent(this.getContext() , Blood_Pressure_History.class);
+            getActivity().startActivity(intent);
+        }
+        else if(v.equals(cv_calories))
+        {
+            Intent intent = new Intent(this.getContext() , Calories_Activity.class);
             getActivity().startActivity(intent);
         }
     }
