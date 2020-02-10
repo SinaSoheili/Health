@@ -60,7 +60,7 @@ public class DB_Illness extends SQLiteOpenHelper
     {
         ArrayList<Illness> all_item = new ArrayList<>();
 
-        String cmd = "SELECT * FROM '"+TABLE_NAME+"'";
+        String cmd = "SELECT DISTINCT * FROM '"+TABLE_NAME+"'";
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(cmd , null);
@@ -91,7 +91,7 @@ public class DB_Illness extends SQLiteOpenHelper
         //TODO:persian search don't work
         ArrayList<Illness> items = new ArrayList<>();
 
-        String cmd = "SELECT * FROM '"+TABLE_NAME+"' WHERE "+NAME_EN_COLUMN+" LIKE '%"+text+"%' OR "+NAME_FA_COLUMN+" LIKE '%"+text+"%'";
+        String cmd = "SELECT DISTINCT * FROM '"+TABLE_NAME+"' WHERE "+NAME_EN_COLUMN+" LIKE '%"+text+"%' OR "+NAME_FA_COLUMN+" LIKE '%"+text+"%'";
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(cmd , null);

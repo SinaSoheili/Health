@@ -60,7 +60,7 @@ public class DB_Calories extends SQLiteOpenHelper
         ArrayList<Calories> all_item = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        String cmd = "SELECT * FROM '"+TABLE_NAME+"'";
+        String cmd = "SELECT DISTINCT * FROM '"+TABLE_NAME+"'";
         Cursor cursor = db.rawQuery(cmd , null);
         cursor.moveToFirst();
         int count = cursor.getCount();
@@ -90,7 +90,7 @@ public class DB_Calories extends SQLiteOpenHelper
         ArrayList<Calories> items = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        String cmd = "SELECT * FROM '"+TABLE_NAME+"' WHERE "+NAME_COLUMN+" LIKE '%"+text+"%';";
+        String cmd = "SELECT DISTINCT * FROM '"+TABLE_NAME+"' WHERE "+NAME_COLUMN+" LIKE '%"+text+"%';";
         Cursor cursor = db.rawQuery(cmd , null);
         cursor.moveToFirst();
         int count = cursor.getCount();
