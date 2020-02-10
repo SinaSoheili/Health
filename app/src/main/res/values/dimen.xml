@@ -53,6 +53,7 @@
     <dimen name="Profile_tv_content">18sp</dimen>
 
     <dimen name="Calories_List_Item_padding">10dp</dimen>
-    <dimen name="Calories_List_text_size">18sp</dimen>
+    <dimen name="Calories_List_Title_text_size">18sp</dimen>
+    <dimen name="Calories_List_SubTitle_text_size">14sp</dimen>
 
 </resources>

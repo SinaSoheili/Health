@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,12 +57,14 @@ public class Calories_Adapter extends ArrayAdapter<Calories>
         private TextView tv_name;
         private TextView tv_amount;
         private TextView tv_calories;
+        private ImageView iv_add_to_archive;
 
         public CaloriesList_ViewHolder(View view)
         {
             tv_name = view.findViewById(R.id.Calories_List_item_name);
             tv_amount = view.findViewById(R.id.Calories_List_item_amount);
             tv_calories = view.findViewById(R.id.Calories_List_item_calories);
+            iv_add_to_archive = view.findViewById(R.id.Calories_List_item_iv_add_to_archive);
         }
 
         public void fill(Calories cal)
@@ -72,6 +75,9 @@ public class Calories_Adapter extends ArrayAdapter<Calories>
             String c = cal.getCalories().substring(0 , cal.getCalories().indexOf("."));
             c = c.replace("$" , "");
             tv_calories.setText("کالری : "+c);
+
+
+            iv_add_to_archive.setTag(cal.getId());
         }
     }
 }
