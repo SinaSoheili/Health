@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -48,6 +50,9 @@ public class Calories_Activity extends AppCompatActivity implements Dashboard_pa
     {
         Calories_Adapter adapter = new Calories_Adapter(this , items);
         listview.setAdapter(adapter);
+
+        LayoutAnimationController anim = AnimationUtils.loadLayoutAnimation(this , R.anim.animation_layout_list_item);
+        listview.setLayoutAnimation(anim);
     }
 
     @Override
