@@ -30,6 +30,8 @@
     <color name="profile_avatar_background">#009688</color>
     <color name="profile_avatar_stroke">#FFFFFF</color>
 
+    <color name="profile_Page_TextColor">#292929</color>
+
     <color name="Calories_List_Item_textcolor">#292929</color>
     <color name="Calories_DialogArchive_SumCalory_textcolor">#292929</color>
     <color name="Calories_DialogArchive_Underline">#009688</color>

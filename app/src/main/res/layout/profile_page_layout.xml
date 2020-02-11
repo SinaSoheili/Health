@@ -14,7 +14,7 @@
         android:background="#009688"
         />
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ImageView
         android:id="@+id/profile_imageview_avatar"
         android:layout_width="250dp"
         android:layout_height="250dp"
@@ -66,8 +66,9 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:textStyle="bold"
-                        android:text="مشخصات فردی"
+                        android:textColor="@color/profile_Page_TextColor"
                         android:textSize="@dimen/Profile_tv_title"
+                        android:text="مشخصات فردی"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="5dp"
                         />
@@ -87,8 +88,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="نام : "
+                    android:textColor="@color/profile_Page_TextColor"
                     android:textSize="@dimen/Profile_tv_content"
+                    android:text="نام : "
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
                     />
@@ -98,8 +100,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="سن : "
                     android:textSize="@dimen/Profile_tv_content"
+                    android:textColor="@color/profile_Page_TextColor"
+                    android:text="سن : "
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
                     />
@@ -109,8 +112,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="قد : "
                     android:textSize="@dimen/Profile_tv_content"
+                    android:textColor="@color/profile_Page_TextColor"
+                    android:text="قد : "
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginRight="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_tv_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:textColor="@color/profile_Page_TextColor"
+                    android:text="وزن : "
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="6dp"
                     android:layout_marginRight="8dp"
@@ -148,8 +165,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textStyle="bold"
-                        android:text="تنظیمات"
                         android:textSize="@dimen/Profile_tv_title"
+                        android:textColor="@color/profile_Page_TextColor"
+                        android:text="تنظیمات"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="5dp"
                         />
@@ -169,11 +187,45 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="comming soon"
+                    android:layout_gravity="right"
                     android:textSize="@dimen/Profile_tv_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
+                    android:textColor="@color/profile_Page_TextColor"
+                    android:text="تغییر فونت"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:textColor="@color/profile_Page_TextColor"
+                    android:text="تغییر تم"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:textColor="@color/profile_Page_TextColor"
+                    android:text="گزارش مشکل"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textSize="@dimen/Profile_tv_content"
+                    android:textColor="@color/profile_Page_TextColor"
+                    android:text="ارتباط با ما"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     />
 
             </LinearLayout>
