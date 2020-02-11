@@ -63,4 +63,10 @@
     <dimen name="Calories_DialogArchive_lv_items_marginLeft">10dp</dimen>
     <dimen name="Calories_DialogArchive_lv_items_marginRight">10dp</dimen>
 
+    <dimen name="IntroSlider_tv_Description_MarginButtom">160dp</dimen>
+    <dimen name="IntroSlider_tv_Description_MarginRight">80dp</dimen>
+    <dimen name="IntroSlider_tv_Description_MarginLeft">80dp</dimen>
+    <dimen name="IntroSlider_iv_Avater_MarginTop">100dp</dimen>
+    <dimen name="IntroSlider_tv_Description_TextSize">20sp</dimen>
+
 </resources>

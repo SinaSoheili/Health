@@ -13,5 +13,8 @@
     <string name="Dashboard_btn_medication_schedule">برنامه دارویی</string>
     <string name="Dashboard_btn_calories">کالری</string>
 
+    <string name="IntroSlider_text_medicineANDillness">امکان جست و جو  و مطالع در مورد دارو و بیماری ها</string>
+    <string name="IntroSlider_text_bloodglucoseANDbloodpressure">ذخیره و نمایش اطلاعات مربوط به قند و فشار خون</string>
+    <string name="IntroSlider_text_medicationschedule">نگه داری برنامه دارویی روزانه</string>
 
 </resources>

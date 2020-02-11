@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/IntroSlider_slide2_background">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blood_pressure"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/IntroSlider_iv_Avater_MarginTop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/IntroSlider_description_text_color"
+        android:textSize="@dimen/IntroSlider_tv_Description_TextSize"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/IntroSlider_tv_Description_MarginButtom"
+        android:layout_marginRight="@dimen/IntroSlider_tv_Description_MarginRight"
+        android:layout_marginLeft="@dimen/IntroSlider_tv_Description_MarginLeft"
+        android:gravity="center"
+        android:text="@string/IntroSlider_text_bloodglucoseANDbloodpressure"
+        />
+
+</RelativeLayout>

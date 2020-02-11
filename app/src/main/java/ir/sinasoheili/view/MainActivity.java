@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,7 +27,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        show_IntroSlider();
+
         init_obj();
+    }
+
+    public void show_IntroSlider()
+    {
+        SharedPreferences pref = getSharedPreferences(IntroSlider.PREF_NAME , MODE_PRIVATE);
+        boolean show = pref.getBoolean(IntroSlider.PREF_KEY , true);
+        if(show == true)
+        {
+            startActivity(new Intent(MainActivity.this , IntroSlider.class));
+        }
     }
 
     private void init_obj()

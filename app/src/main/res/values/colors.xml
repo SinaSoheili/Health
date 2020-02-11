@@ -36,4 +36,10 @@
     <color name="Calories_DialogArchive_SumCalory_textcolor">#292929</color>
     <color name="Calories_DialogArchive_Underline">#009688</color>
 
+    <color name="IntroSlider_slide1_background">#048A7D</color>
+    <color name="IntroSlider_slide2_background">#5061E2</color>
+    <color name="IntroSlider_slide3_background">#06ADC0</color>
+    <color name="IntroSlider_btn_text_color">#FFFFFF</color>
+    <color name="IntroSlider_description_text_color">#FFFFFF</color>
+
 </resources>

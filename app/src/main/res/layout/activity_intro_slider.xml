@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.sinasoheili.view.IntroSlider">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/IntroSlider_ViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <Button
+        android:id="@+id/IntroSlider_btn_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@null"
+        android:textColor="@color/IntroSlider_btn_text_color"
+        android:text="قبلی"
+        android:visibility="invisible"
+        />
+
+    <Button
+        android:id="@+id/IntroSlider_btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:textColor="@color/IntroSlider_btn_text_color"
+        android:text="بعدی"
+        />
+
+    <LinearLayout
+        android:id="@+id/IntroSlider_LinearLayout_CircleContiner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/IntroSlider_btn_next"
+        android:layout_alignBottom="@id/IntroSlider_btn_next"
+        android:gravity="center_vertical"
+        />
+
+</RelativeLayout>
