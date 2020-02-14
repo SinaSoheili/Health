@@ -92,6 +92,7 @@
                     android:textSize="@dimen/Profile_tv_content"
                     android:text="نام : "
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="6dp"
                     android:layout_marginRight="8dp"
                     />
 
@@ -104,6 +105,7 @@
                     android:textColor="@color/profile_Page_TextColor"
                     android:text="سن : "
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="6dp"
                     android:layout_marginRight="8dp"
                     />
 
@@ -184,48 +186,56 @@
                 </LinearLayout>
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:gravity="right"
                     android:textSize="@dimen/Profile_tv_content"
                     android:textColor="@color/profile_Page_TextColor"
                     android:text="تغییر فونت"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
+                    android:background="@null"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:gravity="right"
                     android:textSize="@dimen/Profile_tv_content"
                     android:textColor="@color/profile_Page_TextColor"
                     android:text="تغییر تم"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
+                    android:background="@null"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:gravity="right"
                     android:textSize="@dimen/Profile_tv_content"
                     android:textColor="@color/profile_Page_TextColor"
                     android:text="گزارش مشکل"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
+                    android:background="@null"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:gravity="right"
                     android:textSize="@dimen/Profile_tv_content"
                     android:textColor="@color/profile_Page_TextColor"
                     android:text="ارتباط با ما"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
+                    android:background="@null"
                     />
 
             </LinearLayout>

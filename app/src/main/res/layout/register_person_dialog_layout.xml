@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_person_dialog_et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_person_dialog_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="نام و نام خانوادگی"
+            android:textColor="@color/Register_Person_Dialog_TextColor"
+            android:layout_marginTop="10dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_person_dialog_et_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_person_dialog_et_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="سن"
+            android:textColor="@color/Register_Person_Dialog_TextColor"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="10dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_person_dialog_et_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_person_dialog_et_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="قد بر حسب متر"
+            android:textColor="@color/Register_Person_Dialog_TextColor"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="10dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_person_dialog_et_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_person_dialog_et_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="وزن بر حسب کیلو گرم"
+            android:textColor="@color/Register_Person_Dialog_TextColor"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="10dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/register_person_dialog_btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/button_submit_backgrount"
+        android:text="ثبت"
+        android:layout_marginTop="15dp"
+        />
+
+</LinearLayout>
