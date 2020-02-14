@@ -42,4 +42,6 @@
     <color name="IntroSlider_btn_text_color">#FFFFFF</color>
     <color name="IntroSlider_description_text_color">#FFFFFF</color>
 
+    <color name="Register_Person_Dialog_TextColor">#292929</color>
+
 </resources>
