@@ -32,6 +32,13 @@
             motion:layout_constraintVertical_bias="0"
             />
 
+        <Constraint
+            android:id="@id/profile_nested_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/profile_imageview_avatar"
+            />
+
     </ConstraintSet>
 
     <ConstraintSet
@@ -66,6 +73,13 @@
             motion:layout_constraintVertical_bias="0"
             />
 
+        <Constraint
+            android:id="@id/profile_nested_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/profile_imageview_avatar"
+            />
+
     </ConstraintSet>
 
     <Transition
@@ -75,7 +89,9 @@
 
         <OnSwipe
             motion:moveWhenScrollAtTop="true"
-            motion:touchAnchorId="@id/profile_view_background"
+            motion:touchAnchorId="@id/profile_imageview_avatar"
+            motion:dragDirection="dragUp"
+            motion:touchRegionId="@id/profile_motionLayout"
             />
 
     </Transition>

@@ -31,8 +31,6 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
 
     private Button btn_change_font;
     private Button btn_change_theme;
-    private Button btn_bug_report;
-    private Button btn_contact_us;
 
     @Nullable
     @Override
@@ -64,12 +62,6 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
 
         btn_change_theme = root_view.findViewById(R.id.profile_btn_change_theme);
         btn_change_theme.setOnClickListener(this);
-
-        btn_bug_report = root_view.findViewById(R.id.profile_btn_bug_reporting);
-        btn_bug_report.setOnClickListener(this);
-
-        btn_contact_us = root_view.findViewById(R.id.profile_btn_contact_us);
-        btn_contact_us.setOnClickListener(this);
     }
 
     @Override
@@ -151,13 +143,6 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
         {
             temp_dialog();
         }
-        else if(v.equals(btn_bug_report))
-        {
-            temp_dialog();
-        }
-        else if(v.equals(btn_contact_us))
-        {
-            temp_dialog();
-        }
+
     }
 }
