@@ -7,12 +7,14 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -83,6 +85,13 @@ public class Blood_Glucose_History extends AppCompatActivity implements Dashboar
     public void onPageSelected(int position)
     {
         ArrayList<BloodGlucose> all_item = presenter.get_all_blood_glucose();
+
+        if(all_item.size() == 0)
+        {
+            Toast t = Toast.makeText(this , "هنوز اطلاعاتی را وارد نکرده اید!!!" , Toast.LENGTH_SHORT);
+            t.setGravity(Gravity.CENTER , 0 ,0);
+            t.show();
+        }
 
         if(position == 0)
         {

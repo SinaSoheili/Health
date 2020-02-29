@@ -5,10 +5,13 @@ import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -78,6 +81,13 @@ public class Blood_Pressure_History extends AppCompatActivity implements Dashboa
     public void onPageSelected(int position)
     {
         ArrayList<BloodPressure> all_item = presenter.get_all_blood_pressure();
+
+        if(all_item.size() == 0)
+        {
+            Toast t = Toast.makeText(this , "هنوز اطلاعاتی را وارد نکرده اید!!!" , Toast.LENGTH_SHORT);
+            t.setGravity(Gravity.CENTER , 0 ,0);
+            t.show();
+        }
 
         if(position == 0)
         {
