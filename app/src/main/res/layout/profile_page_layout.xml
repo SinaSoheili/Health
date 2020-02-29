@@ -187,6 +187,7 @@
 
 
                 <Button
+                    android:id="@+id/profile_btn_change_font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -200,6 +201,7 @@
                     />
 
                 <Button
+                    android:id="@+id/profile_btn_change_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -213,6 +215,7 @@
                     />
 
                 <Button
+                    android:id="@+id/profile_btn_bug_reporting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -226,6 +229,7 @@
                     />
 
                 <Button
+                    android:id="@+id/profile_btn_contact_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
