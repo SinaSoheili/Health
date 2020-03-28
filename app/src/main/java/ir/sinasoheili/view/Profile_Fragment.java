@@ -2,12 +2,15 @@ package ir.sinasoheili.view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +21,15 @@ import java.text.DecimalFormat;
 import presenter.Profile_Page_contract;
 import presenter.Profile_Page_presenter;
 
+import static android.app.Activity.RESULT_OK;
+
 public class Profile_Fragment extends Fragment implements Profile_Page_contract.Profile_Page_contract_view, View.OnClickListener
 {
     private Profile_Page_contract.Profile_Page_contract_presenter presenter;
 
     private View root_view;
+    private ImageView iv_avatar;
+    private ImageView iv_add_avatar;
 
     private TextView tv_name;
     private TextView tv_age;
@@ -52,6 +59,8 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
     {
         presenter = new Profile_Page_presenter(root_view.getContext() , Profile_Fragment.this);
 
+        iv_avatar = root_view.findViewById(R.id.profile_imageview_avatar);
+
         tv_name = root_view.findViewById(R.id.profile_tv_name);
         tv_age = root_view.findViewById(R.id.profile_tv_age);
         tv_height = root_view.findViewById(R.id.profile_tv_height);
@@ -62,6 +71,9 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
 
         btn_change_theme = root_view.findViewById(R.id.profile_btn_change_theme);
         btn_change_theme.setOnClickListener(this);
+
+        iv_add_avatar = root_view.findViewById(R.id.profile_imageview_add_avatar);
+        iv_add_avatar.setOnClickListener(this);
     }
 
     @Override
@@ -143,6 +155,26 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
         {
             temp_dialog();
         }
+        else if(v.equals(iv_add_avatar))
+        {
+            change_avatar();
+        }
+    }
 
+    private void change_avatar()
+    {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent , "SELECT AVATAR") , 100); // 100 is my request code
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        if((requestCode == 100) && (resultCode == RESULT_OK))
+        {
+            iv_avatar.setImageURI(data.getData());
+        }
     }
 }
