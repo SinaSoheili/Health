@@ -94,8 +94,8 @@
 
         <Constraint
             android:id="@+id/profile_imageview_add_avatar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             motion:layout_constraintBottom_toBottomOf="@id/profile_view_background"
             motion:layout_constraintTop_toBottomOf="@id/profile_view_background"
             motion:layout_constraintLeft_toRightOf="@id/profile_imageview_avatar"
