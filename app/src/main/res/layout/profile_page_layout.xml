@@ -16,14 +16,40 @@
         android:background="#009688"
         />
 
+    <!-- background-->
     <ImageView
-        android:id="@+id/profile_imageview_avatar"
+        android:id="@+id/profile_iv_avatar_background"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/person"
         android:scaleType="fitXY"
-        android:padding="28dp"
-        android:background="@drawable/avatar_background"
+        android:src="@drawable/avatar_background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/profile_view_background"
+        android:layout_marginTop="150dp"
+        />
+
+    <!--avatar-->
+    <ImageView
+        android:id="@+id/profile_imageview_avatar"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:src="@drawable/person"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/profile_iv_avatar_background"
+        app:layout_constraintTop_toTopOf="@id/profile_iv_avatar_background"
+        app:layout_constraintRight_toRightOf="@id/profile_iv_avatar_background"
+        app:layout_constraintLeft_toLeftOf="@id/profile_iv_avatar_background"
+        />
+
+    <!--foreground-->
+    <ImageView
+        android:id="@+id/profile_iv_avatar_foreground"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/avatar_ring_fore_ground"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,8 +63,8 @@
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@id/profile_view_background"
         app:layout_constraintTop_toBottomOf="@id/profile_view_background"
-        app:layout_constraintLeft_toRightOf="@id/profile_imageview_avatar"
-        app:layout_constraintRight_toRightOf="@id/profile_imageview_avatar"
+        app:layout_constraintLeft_toRightOf="@id/profile_iv_avatar_background"
+        app:layout_constraintRight_toRightOf="@id/profile_iv_avatar_background"
         android:foreground="@drawable/add_avatar_backgruound"
         android:background="@drawable/add_avatar"
         android:visibility="visible"
@@ -48,7 +74,7 @@
         android:id="@+id/profile_nested_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/profile_imageview_avatar">
+        app:layout_constraintTop_toBottomOf="@id/profile_iv_avatar_background">
 
         <LinearLayout
             android:id="@+id/profile_LinearLayout_continer"
@@ -56,7 +82,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_imageview_avatar"
+            app:layout_constraintTop_toBottomOf="@id/profile_iv_avatar_background"
             app:layout_constraintVertical_bias="0">
 
             <androidx.cardview.widget.CardView
