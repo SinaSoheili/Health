@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -231,67 +232,71 @@ public class HomePage_Fragment extends Fragment implements Home_page_contract.Ma
                 int height_of_each_item = 100;  //TODO : get real height of each item
                 int each_time_time_animate = 500;
 
-                if(medication_schedule_arrow.getTag().toString().equals("up"))
+                if(items_medications_schedule.size() <= 0)
+                {
+                    Toast t = Toast.makeText(getContext(), "هنوز موردی ثبت نشده است!!", Toast.LENGTH_SHORT);
+                    t.setGravity(Gravity.CENTER , 0 , 0);
+                    t.show();
+                    return;
+                }
+
+                if(medication_schedule_arrow.getTag().toString().equals("up")) // list show to user
                 {
                     medication_schedule_arrow.setTag("down");
                     medication_schedule_arrow.animate().rotation(180).setDuration(250).start();
 
-                    if(items_medications_schedule.size() > 0)
+                    int item_count = items_medications_schedule.size();
+
+                    int title_animate_delay = 150;
+                    int title_animate_duration = 700;
+
+                    int items_animate_delay = title_animate_delay + 100;
+                    int items_animate_duration = each_time_time_animate*item_count;
+
+                    int show_items_delay = items_animate_delay + 400;
+
+                    //set visibility title
+                    layout_MedicationSchdule_item_title.setAlpha(0);
+                    layout_MedicationSchdule_item_title.setVisibility(View.VISIBLE);
+                    layout_MedicationSchdule_item_title.animate().alpha(1).setStartDelay(title_animate_delay).setDuration(title_animate_duration).start();
+
+                    //animated
+                    MainView_CardView_MedicationSchedule_item_continer.setAlpha(1);
+                    MainView_CardView_MedicationSchedule_item_continer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , 0));
+                    ValueAnimator va = ValueAnimator.ofInt(0 , (item_count * height_of_each_item));
+                    va.setStartDelay(items_animate_delay);
+                    va.setDuration(items_animate_duration);
+                    va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
                     {
-                        int item_count = items_medications_schedule.size();
-
-                        int title_animate_delay = 60;
-                        int title_animate_duration = 400;
-
-                        int items_animate_delay = title_animate_delay + 100;
-                        int items_animate_duration = each_time_time_animate*item_count;
-
-                        int show_items_delay = items_animate_delay + 400;
-
-                        //set visibility title
-                        layout_MedicationSchdule_item_title.setAlpha(0);
-                        layout_MedicationSchdule_item_title.setVisibility(View.VISIBLE);
-                        layout_MedicationSchdule_item_title.animate().alpha(1).setStartDelay(title_animate_delay).setDuration(title_animate_duration).start();
-
-                        //animated
-                        MainView_CardView_MedicationSchedule_item_continer.setAlpha(1);
-                        MainView_CardView_MedicationSchedule_item_continer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , 0));
-                        ValueAnimator va = ValueAnimator.ofInt(0 , (item_count * height_of_each_item));
-                        va.setDuration(items_animate_duration);
-                        va.setStartDelay(items_animate_delay);
-                        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator animation)
                         {
-                            @Override
-                            public void onAnimationUpdate(ValueAnimator animation)
-                            {
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , (int)animation.getAnimatedValue());
-                                MainView_CardView_MedicationSchedule_item_continer.setLayoutParams(params);
-                            }
-                        });
-                        va.start();
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , (int)animation.getAnimatedValue());
+                            MainView_CardView_MedicationSchedule_item_continer.setLayoutParams(params);
+                        }
+                    });
+                    va.start();
 
-                        //show item's
-                        new Handler().postDelayed(new Runnable()
+                    //show item's
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        @Override
+                        public void run()
                         {
-                            @Override
-                            public void run()
+                            MedicationSchedule_List_Adapter adapter = new MedicationSchedule_List_Adapter(getContext() , items_medications_schedule);
+                            for(int i=0 ; i<adapter.getCount() ; i++)
                             {
-                                MedicationSchedule_List_Adapter adapter = new MedicationSchedule_List_Adapter(getContext() , items_medications_schedule);
-                                for(int i=0 ; i<adapter.getCount() ; i++)
-                                {
-                                    view_of_list_item = adapter.getView(i , null , null);
+                                view_of_list_item = adapter.getView(i , null , null);
 
-                                    view_of_list_item.setAlpha(0);
-                                    view_of_list_item.animate().alpha(1).setStartDelay(i*30).setDuration(900).start();
+                                view_of_list_item.setAlpha(0);
+                                view_of_list_item.animate().alpha(1).setStartDelay(i*30).setDuration(900).start();
 
-                                    MainView_CardView_MedicationSchedule_item_continer.addView(view_of_list_item);
-                                }
+                                MainView_CardView_MedicationSchedule_item_continer.addView(view_of_list_item);
                             }
-                        } , show_items_delay);
-
-                    }
+                        }
+                    } , show_items_delay);
                 }
-                else
+                else // list hide to user
                 {
                     int count = items_medications_schedule.size();
 
