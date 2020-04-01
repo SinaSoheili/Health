@@ -239,28 +239,14 @@
                         android:layout_gravity="right">
 
                         <Button
-                            android:id="@+id/profile_btn_change_font"
+                            android:id="@+id/profile_btn_contact_us"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:gravity="right"
                             android:textSize="@dimen/Profile_tv_content"
                             android:textColor="@color/profile_Page_TextColor"
-                            android:text="تغییر فونت"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@null"
-                            />
-
-                        <Button
-                            android:id="@+id/profile_btn_change_theme"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:gravity="right"
-                            android:textSize="@dimen/Profile_tv_content"
-                            android:textColor="@color/profile_Page_TextColor"
-                            android:text="تغییر تم"
+                            android:text="ارتباط با ما"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
                             android:background="@null"

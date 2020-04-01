@@ -3,6 +3,7 @@ package ir.sinasoheili.view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,8 +37,7 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
     private TextView tv_height;
     private TextView tv_weight;
 
-    private Button btn_change_font;
-    private Button btn_change_theme;
+    private Button btn_contact_us;
 
     @Nullable
     @Override
@@ -66,11 +66,8 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
         tv_height = root_view.findViewById(R.id.profile_tv_height);
         tv_weight = root_view.findViewById(R.id.profile_tv_weight);
 
-        btn_change_font = root_view.findViewById(R.id.profile_btn_change_font);
-        btn_change_font.setOnClickListener(this);
-
-        btn_change_theme = root_view.findViewById(R.id.profile_btn_change_theme);
-        btn_change_theme.setOnClickListener(this);
+        btn_contact_us = root_view.findViewById(R.id.profile_btn_contact_us);
+        btn_contact_us.setOnClickListener(this);
 
         iv_add_avatar = root_view.findViewById(R.id.profile_imageview_add_avatar);
         iv_add_avatar.setOnClickListener(this);
@@ -129,10 +126,21 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
         }
     }
 
-    private void temp_dialog()
+    private void show_contact_dialog()
     {
         AlertDialog.Builder dialog = new AlertDialog.Builder(root_view.getContext());
-        dialog.setMessage("این قسمت با عنوان good first issues به جهت سادگی برای مشارکت با دیگر برنامه نویس ها در github  و gitlab  قرار گرفته است");
+        dialog.setMessage("برای ارتباط با ما و یا گزارش مشکل لطفا از ایمیل زیر استفاذه کنید .");
+
+        dialog.setPositiveButton("ارسال ایمیل", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Intent intent = new Intent(Intent.ACTION_SENDTO , Uri.parse("mailto:sinasoheili79@gmail.com"));
+                startActivity(intent);
+            }
+        });
+
         dialog.setNegativeButton("باشه", new DialogInterface.OnClickListener()
         {
             @Override
@@ -141,19 +149,16 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
                 dialog.dismiss();
             }
         });
+
         dialog.show();
     }
 
     @Override
     public void onClick(View v)
     {
-        if(v.equals(btn_change_font))
+        if(v.equals(btn_contact_us))
         {
-            temp_dialog();
-        }
-        else if(v.equals(btn_change_theme))
-        {
-            temp_dialog();
+            show_contact_dialog();
         }
         else if(v.equals(iv_add_avatar))
         {
