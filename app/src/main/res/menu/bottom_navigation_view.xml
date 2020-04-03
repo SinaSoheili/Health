@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/manu_bnv_home"
-        android:title="Home"
+        android:title="خانه"
         android:icon="@drawable/home"
         />
 
     <item
         android:id="@+id/manu_bnv_dashboard"
-        android:title="Dashboard"
+        android:title="داشبورد"
         android:icon="@drawable/dashboard"
         />
 
     <item
         android:id="@+id/manu_bnv_profile"
-        android:title="Profile"
+        android:title="پروفایل"
         android:icon="@drawable/profile"
         />
 

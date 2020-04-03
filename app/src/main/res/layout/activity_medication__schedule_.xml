@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ir.sinasoheili.view.Medication_Schedule_Activity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/medication_schadule_List_title"

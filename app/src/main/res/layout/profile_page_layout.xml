@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/motion_description">
+    app:layoutDescription="@xml/motion_description"
+    android:background="@color/background">
 
 
     <View
@@ -83,7 +84,8 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_iv_avatar_background"
-            app:layout_constraintVertical_bias="0">
+            app:layout_constraintVertical_bias="0"
+            android:layout_margin="4dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/Profile_CardView_personalInformation"

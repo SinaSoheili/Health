@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Health</string>
+    <string name="app_name">کافه سلامت</string>
 
     <string name="MainView_CardView_Medication_Title">برنامه دارویی روز : </string>
     <string name="MainView_CardView_BloodGlucose_Title">قند خون</string>
