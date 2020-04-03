@@ -252,6 +252,20 @@
                             android:background="@null"
                             />
 
+                        <Button
+                            android:id="@+id/profile_btn_rating"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:gravity="right"
+                            android:textSize="@dimen/Profile_tv_content"
+                            android:textColor="@color/profile_Page_TextColor"
+                            android:text="امتیاز و نظرات"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@null"
+                            />
+
                     </LinearLayout>
 
                 </LinearLayout>

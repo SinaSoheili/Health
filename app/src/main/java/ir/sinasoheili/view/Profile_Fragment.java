@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
     private TextView tv_weight;
 
     private Button btn_contact_us;
+    private Button btn_rating;
 
     @Nullable
     @Override
@@ -79,6 +81,9 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
 
         btn_contact_us = root_view.findViewById(R.id.profile_btn_contact_us);
         btn_contact_us.setOnClickListener(this);
+
+        btn_rating = root_view.findViewById(R.id.profile_btn_rating);
+        btn_rating.setOnClickListener(this);
 
         iv_add_avatar = root_view.findViewById(R.id.profile_imageview_add_avatar);
         iv_add_avatar.setOnClickListener(this);
@@ -170,6 +175,13 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
         if(v.equals(btn_contact_us))
         {
             show_contact_dialog();
+        }
+        else if(v.equals(btn_rating))
+        {
+            Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.setData(Uri.parse("bazaar://details?id=" + getContext().getPackageName()));
+            intent.setPackage("com.farsitel.bazaar");
+            getContext().startActivity(intent);
         }
         else if(v.equals(iv_add_avatar))
         {
