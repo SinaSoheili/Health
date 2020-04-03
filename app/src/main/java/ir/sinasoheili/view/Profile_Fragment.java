@@ -3,8 +3,12 @@ package ir.sinasoheili.view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +21,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DecimalFormat;
 
 import presenter.Profile_Page_contract;
@@ -51,6 +61,7 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
         presenter.get_user_age();
         presenter.get_user_height();
         presenter.get_user_weight();
+        set_avatar();
 
         return root_view;
     }
@@ -129,7 +140,7 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
     private void show_contact_dialog()
     {
         AlertDialog.Builder dialog = new AlertDialog.Builder(root_view.getContext());
-        dialog.setMessage("برای ارتباط با ما و یا گزارش مشکل لطفا از ایمیل زیر استفاذه کنید .");
+        dialog.setMessage("برای ارتباط با ما و یا گزارش مشکل لطفا از ایمیل زیر استفاده کنید .");
 
         dialog.setPositiveButton("ارسال ایمیل", new DialogInterface.OnClickListener()
         {
@@ -179,7 +190,72 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
     {
         if((requestCode == 100) && (resultCode == RESULT_OK))
         {
-            iv_avatar.setImageURI(data.getData());
+            try
+            {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver() , data.getData());
+                write_bitmap_to_file(bitmap);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            set_avatar();
         }
+    }
+
+    private void set_avatar()
+    {
+        Bitmap bitmap = read_from_file();
+        if(bitmap == null)
+        {
+            iv_avatar.setImageResource(R.drawable.person);
+        }
+        else
+        {
+            iv_avatar.setImageBitmap(bitmap);
+        }
+    }
+
+    private boolean write_bitmap_to_file(Bitmap bitmap)
+    {
+        File file = new File(getContext().getFilesDir().getAbsolutePath()+"/"+"bitmap_file.png");
+        if(! file.exists())
+        {
+            try
+            {
+                file.createNewFile();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        try
+        {
+            return bitmap.compress(Bitmap.CompressFormat.PNG , 100 , new FileOutputStream(file));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    private Bitmap read_from_file()
+    {
+        try
+        {
+            File file = new File(getContext().getFilesDir().getAbsolutePath()+"/"+"bitmap_file.png");
+            return BitmapFactory.decodeStream(new FileInputStream(file));
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
