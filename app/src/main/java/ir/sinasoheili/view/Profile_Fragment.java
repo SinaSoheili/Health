@@ -140,7 +140,7 @@ public class Profile_Fragment extends Fragment implements Profile_Page_contract.
     private void show_contact_dialog()
     {
         AlertDialog.Builder dialog = new AlertDialog.Builder(root_view.getContext());
-        dialog.setMessage("برای ارتباط با ما و یا گزارش مشکل لطفا از ایمیل زیر استفاده کنید .");
+        dialog.setMessage("برای ارتباط و یا گزارش مشکل لطفا از ایمیل زیر استفاده کنید .");
 
         dialog.setPositiveButton("ارسال ایمیل", new DialogInterface.OnClickListener()
         {

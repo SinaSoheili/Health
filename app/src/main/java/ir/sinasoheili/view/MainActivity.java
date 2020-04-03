@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +57,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         show_register_dialog();
 
         init_obj();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) //handle back button pressed
+    {
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setMessage("آیا قصد خروج از برنامه را دارید؟؟");
+            dialog.setPositiveButton("خیر", null);
+            dialog.setNegativeButton("بله", new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    finish();
+                }
+            });
+            dialog.show();
+        }
+
+        return true;
     }
 
     public void show_IntroSlider()
@@ -153,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             edit.putString(PREF_DIALOG_REGISTER_KEY_WEIGHT , et_weight_person_register_dialog.getText().toString()).commit();
 
             dialog_register_person.dismiss();
+
             Toast.makeText(this, "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
         }
     }
