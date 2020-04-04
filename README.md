@@ -10,14 +10,14 @@
   </p>
   <br/><br/>
 
-<img src="https://github.com/SINAsoheili/Health/blob/master/app_image/Screenshot_20200404-192437_%20.jpg" width="300" height="600" />
-<img src="https://github.com/SINAsoheili/Health/blob/master/app_image/Screenshot_20200404-192449_%20.jpg" width="300" height="600" />
+<img src="/app_image/Screenshot_20200404-192437_%20.jpg" width="300" height="600" />
+<img src="/app_image/Screenshot_20200404-192449_%20.jpg" width="300" height="600" />
 <br/>
-<img src="https://github.com/SINAsoheili/Health/blob/master/app_image/Screenshot_20200404-192510_%20.jpg" width="300" height="600" />
-<img src="https://github.com/SINAsoheili/Health/blob/master/app_image/Screenshot_20200404-192534_%20.jpg" width="300" height="600" />
+<img src="/app_image/Screenshot_20200404-192510_%20.jpg" width="300" height="600" />
+<img src="app_image/Screenshot_20200404-192534_%20.jpg" width="300" height="600" />
 <br/>
-<img src="https://github.com/SINAsoheili/Health/blob/master/app_image/Screenshot_20200404-192555_%20.jpg" width="300" height="600" />
-<img src="https://github.com/SINAsoheili/Health/blob/master/app_image/Screenshot_20200404-192519_%20.jpg" width="300" height="600" />
+<img src="app_image/Screenshot_20200404-192555_%20.jpg" width="300" height="600" />
+<img src="app_image/Screenshot_20200404-192519_%20.jpg" width="300" height="600" />
 
 
   <br/><br/><br/>
