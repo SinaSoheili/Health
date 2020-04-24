@@ -3,7 +3,6 @@
     package="ir.sinasoheili.view">
 
     <uses-permission android:name="android.permission.BODY_SENSORS"/>
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
 
     <application
         android:name="presenter.app"
