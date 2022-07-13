@@ -4,7 +4,7 @@
   <br/>
 
   <p>
-    This is health care android application.<br>
+    This is healthcare android application.<br>
     In this application users can :<br>
     <ul>
       <li>Register daily <i>blood pressure</i> and <i>blood glucose</i></li>
